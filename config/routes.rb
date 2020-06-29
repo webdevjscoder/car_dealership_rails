@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :vehicles
   resources :car_models
   resources :makes
   root 'welcome#home'
