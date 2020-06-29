@@ -1,0 +1,2 @@
+class CustomerVehicle < ApplicationRecord
+end
