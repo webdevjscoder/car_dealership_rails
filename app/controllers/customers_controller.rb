@@ -6,8 +6,12 @@ class CustomersController < ApplicationController
 
     def create
         @customer = Customer.new(customer_params(:first_name, :last_name, :email, :password))
-        @customer.save
-        redirect_to welcome_path(@customer)
+        if @customer.save
+            session[:user_id] = @customer.id
+            redirect_to welcome_path(@customer)
+        else
+            render :new
+        end
     end
 
     private
