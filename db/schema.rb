@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_194843) do
+ActiveRecord::Schema.define(version: 2020_06_29_202119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,23 @@ ActiveRecord::Schema.define(version: 2020_06_29_194843) do
   create_table "makes", force: :cascade do |t|
     t.string "make_name"
     t.string "country"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.integer "make_id"
+    t.integer "car_model_id"
+    t.integer "year", limit: 2
+    t.string "engine_driveline"
+    t.string "engine_type"
+    t.string "engine_transmission"
+    t.string "engine_horsepower"
+    t.string "engine_torque"
+    t.string "fuel_type"
+    t.string "city_mpg"
+    t.string "highway_mpg"
+    t.string "classification"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
