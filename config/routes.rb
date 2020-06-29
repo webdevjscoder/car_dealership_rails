@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :car_models
   resources :makes
   root 'welcome#home'
   get '/welcome/:id', to: 'welcome#home', as: 'welcome'
