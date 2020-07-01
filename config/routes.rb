@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   resources :customer_vehicles
   resources :vehicles
   resources :car_models
-  resources :makes
+  resources :car_makes
   root 'welcome#home'
   get '/welcome/:id', to: 'welcome#home', as: 'welcome'
-  resources :customers, except: [:new]
-  get '/signup', to: 'customers#new'
+  resources :users, except: [:new]
+  get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'

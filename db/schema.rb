@@ -10,64 +10,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_29_223222) do
+ActiveRecord::Schema.define(version: 2020_07_01_174836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "car_models", force: :cascade do |t|
-    t.string "car_model"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "car_makes", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 100, null: false
   end
 
-  create_table "customer_vehicles", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "vehicle_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "car_models", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 100, null: false
   end
 
-  create_table "customers", force: :cascade do |t|
+  create_table "drive_lines", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+  end
+
+  create_table "engine_types", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+    t.integer "drive_line_id"
+    t.integer "transmission_type_id"
+  end
+
+  create_table "engines", id: :serial, force: :cascade do |t|
+    t.integer "horsepower", limit: 2, null: false
+    t.integer "torque", limit: 2, null: false
+  end
+
+  create_table "fuel_types", id: :serial, force: :cascade do |t|
+    t.integer "city_mpg", limit: 2, null: false
+    t.string "name", limit: 100, null: false
+    t.integer "hwy_mpg", limit: 2, null: false
+  end
+
+  create_table "transmission_types", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+  end
+
+  create_table "transmissions", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "first_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "last_name"
     t.string "email"
     t.string "phone"
     t.string "password_digest"
     t.boolean "admin", default: false
-  end
-
-  create_table "inventories", force: :cascade do |t|
-    t.integer "vehicle_id"
-    t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "makes", force: :cascade do |t|
-    t.string "make_name"
-    t.string "country"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "vehicles", force: :cascade do |t|
+  create_table "vehicles", id: :serial, force: :cascade do |t|
+    t.integer "year", limit: 2, null: false
     t.integer "make_id"
-    t.integer "car_model_id"
-    t.integer "year", limit: 2
-    t.string "engine_driveline"
-    t.string "engine_type"
-    t.string "engine_transmission"
-    t.string "engine_horsepower"
-    t.string "engine_torque"
-    t.string "fuel_type"
-    t.string "city_mpg"
-    t.string "highway_mpg"
-    t.string "classification"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "model_id"
+    t.integer "engine_type_id"
+    t.integer "fuel_type_id"
+    t.integer "transmission_id"
+    t.integer "engine_id"
   end
 
+  add_foreign_key "engine_types", "drive_lines", name: "engine_types_drive_line_id_fkey"
+  add_foreign_key "engine_types", "transmission_types", name: "engine_types_transmission_type_id_fkey"
+  add_foreign_key "vehicles", "car_makes", column: "make_id", name: "vehicles_make_id_fkey"
+  add_foreign_key "vehicles", "car_models", column: "model_id", name: "vehicles_model_id_fkey"
+  add_foreign_key "vehicles", "engine_types", name: "vehicles_engine_type_id_fkey"
+  add_foreign_key "vehicles", "engines", name: "vehicles_engine_id_fkey"
+  add_foreign_key "vehicles", "fuel_types", name: "vehicles_fuel_type_id_fkey"
+  add_foreign_key "vehicles", "transmissions", name: "vehicles_transmission_id_fkey"
 end

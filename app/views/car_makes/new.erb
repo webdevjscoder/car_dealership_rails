@@ -1,0 +1,7 @@
+<h1>Make for new car</h1>
+
+<%= form_for @car_make do |f| %>
+    <%= f.label :name %>
+    <%= f.collection_select :name, CarMake.all, :id, :name, :include_blank => 'Select Make' %><br>
+    <%= f.submit %>
+<% end %>
