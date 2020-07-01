@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_174836) do
+ActiveRecord::Schema.define(version: 2020_07_01_205009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 2020_07_01_174836) do
     t.integer "hwy_mpg", limit: 2, null: false
   end
 
+  create_table "inventories", force: :cascade do |t|
+    t.decimal "price", precision: 9, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "vehicle_id", null: false
+    t.index ["vehicle_id"], name: "index_inventories_on_vehicle_id"
+  end
+
   create_table "transmission_types", id: :serial, force: :cascade do |t|
     t.string "name", limit: 100, null: false
   end
@@ -65,8 +73,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_174836) do
 
   create_table "vehicles", id: :serial, force: :cascade do |t|
     t.integer "year", limit: 2, null: false
-    t.integer "make_id"
-    t.integer "model_id"
+    t.integer "car_make_id"
+    t.integer "car_model_id"
     t.integer "engine_type_id"
     t.integer "fuel_type_id"
     t.integer "transmission_id"
@@ -75,8 +83,9 @@ ActiveRecord::Schema.define(version: 2020_07_01_174836) do
 
   add_foreign_key "engine_types", "drive_lines", name: "engine_types_drive_line_id_fkey"
   add_foreign_key "engine_types", "transmission_types", name: "engine_types_transmission_type_id_fkey"
-  add_foreign_key "vehicles", "car_makes", column: "make_id", name: "vehicles_make_id_fkey"
-  add_foreign_key "vehicles", "car_models", column: "model_id", name: "vehicles_model_id_fkey"
+  add_foreign_key "inventories", "vehicles"
+  add_foreign_key "vehicles", "car_makes", name: "vehicles_make_id_fkey"
+  add_foreign_key "vehicles", "car_models", name: "vehicles_model_id_fkey"
   add_foreign_key "vehicles", "engine_types", name: "vehicles_engine_type_id_fkey"
   add_foreign_key "vehicles", "engines", name: "vehicles_engine_id_fkey"
   add_foreign_key "vehicles", "fuel_types", name: "vehicles_fuel_type_id_fkey"
