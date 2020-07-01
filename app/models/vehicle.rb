@@ -6,4 +6,6 @@ class Vehicle < ApplicationRecord
     belongs_to :transmission
     belongs_to :engine
     has_many :inventories
+    has_many :user_vehicles
+    has_many :users, through: :user_vehicles
 end
