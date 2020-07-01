@@ -1,0 +1,2 @@
+class TransmissionType < ApplicationRecord
+end

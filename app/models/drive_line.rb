@@ -1,0 +1,2 @@
+class DriveLine < ApplicationRecord
+end
