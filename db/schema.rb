@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_205009) do
+ActiveRecord::Schema.define(version: 2020_07_01_235015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2020_07_01_205009) do
     t.string "name", limit: 100, null: false
   end
 
+  create_table "user_vehicles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_vehicles_on_user_id"
+    t.index ["vehicle_id"], name: "index_user_vehicles_on_vehicle_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -84,6 +93,8 @@ ActiveRecord::Schema.define(version: 2020_07_01_205009) do
   add_foreign_key "engine_types", "drive_lines", name: "engine_types_drive_line_id_fkey"
   add_foreign_key "engine_types", "transmission_types", name: "engine_types_transmission_type_id_fkey"
   add_foreign_key "inventories", "vehicles"
+  add_foreign_key "user_vehicles", "users"
+  add_foreign_key "user_vehicles", "vehicles"
   add_foreign_key "vehicles", "car_makes", name: "vehicles_make_id_fkey"
   add_foreign_key "vehicles", "car_models", name: "vehicles_model_id_fkey"
   add_foreign_key "vehicles", "engine_types", name: "vehicles_engine_type_id_fkey"
