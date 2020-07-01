@@ -1,4 +1,4 @@
-class Customer < ApplicationRecord
+class User < ApplicationRecord
     has_secure_password
     has_many :customer_vehicles
     has_many :vehicles, through: :customer_vehicles
