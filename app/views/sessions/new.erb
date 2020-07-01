@@ -1,6 +1,6 @@
 <h1>Sign In</h1>
 
-<%= form_for @customer, :url => url_for(controller: "sessions", action: "create") do |f| %>
+<%= form_for @user, :url => url_for(controller: "sessions", action: "create") do |f| %>
     <%= f.label :email %>
     <%= f.email_field :email %><br>
     <%= f.label :password %>
