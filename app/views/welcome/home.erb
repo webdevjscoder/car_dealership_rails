@@ -1,3 +1,7 @@
 <h1>You are in the welcome screen!</h1>
 
+<% if logged_in? %>
+    <h1>Welcome, <%= current_user.first_name %></h1>
+<% end %>
+
 <%= link_to 'Logout', logout_path %>

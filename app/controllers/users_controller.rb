@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params(:first_name, :last_name, :email, :password))
         if @user.save
             session[:user_id] = @user.id
-            redirect_to welcome_path(@user)
+            redirect_to welcome_path(@user), alert: 'Account was successfully created!'
         else
             render :new
         end
