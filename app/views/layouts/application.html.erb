@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CarDealershipRails</title>
+    <title>Bizzare Car Dealership</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +10,10 @@
   </head>
 
   <body>
-    <% flash.each do |msg| %>
-      <%= msg %>
-    <% end %>
+    <%= render "layouts/navbar" %>
+      <% flash.each do |msg| %>
+        <%= msg %>
+      <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,47 @@
+/* Default font */
+* {
+    font-family: serif;
+}
+
+ /* Removes underline from all links */
+
+a:-webkit-any-link {
+    text-decoration: none;
+    color: black;
+}
+
+/* Header tag */
+.default-layout-header {
+    background: transparent;
+    border-bottom: 1px solid #f0f0f0;
+    height: 56px;
+    position: fixed;
+    width: 100%;
+}
+
+/* Contains logo and navbar */
+.main-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo styling */
+.site_logo {
+   margin: 0;
+   margin-left: 5px;
+}
+
+/* Navbar links container */
+.navbar-links {
+    display: flex;
+    justify-content: center;
+}
+
+/* Narbar links */
+.navbar-links li {
+    list-style: none;
+    border-left: 1px solid #f0f0f0;
+    font-weight: bold;
+    padding: 0 8px;
+}

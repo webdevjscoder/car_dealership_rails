@@ -1,0 +1,14 @@
+      <header class='default-layout-header'>
+          <div class='main-navbar-container'>
+            <h1 class='site_logo'>
+              <%= link_to 'BCD', root_path, {class: 'logo'} %>
+            </h1>
+            <nav class='main-navbar'>
+              <ul class='navbar-links'>
+                <li><%= link_to 'Sign In', signin_path %></li>
+                <li><%= link_to 'Sign Up', signup_path %></li>
+                <li><%= link_to 'Log Out', logout_path %></li>
+              </ul>
+            </nav>
+        </div>
+      </header>

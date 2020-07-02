@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 2000px;
+    box-sizing: border-box;
+    /* background-image: url(https://coder-coder.com/wp-content/uploads/2019/04/post-z-index.png); */
+}
