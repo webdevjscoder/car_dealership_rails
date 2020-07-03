@@ -1,0 +1,8 @@
+.welcome-car-images h2 {
+    margin: 0;
+    text-align: center;
+    position: relative;
+    top: 65px;
+    z-index: 1;
+    font-size: 42px;
+}
