@@ -1,0 +1,12 @@
+.car-make-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-makes {
+    margin-top: 56px;
+}
+
+.car-makes ul li {
+    list-style: none;
+}
