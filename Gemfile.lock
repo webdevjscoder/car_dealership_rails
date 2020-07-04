@@ -90,6 +90,9 @@ GEM
     dotenv (2.7.5)
     erubi (1.9.0)
     eventmachine (1.2.7)
+    eventmachine (1.2.7-java)
+    eventmachine (1.2.7-x64-mingw32)
+    eventmachine (1.2.7-x86-mingw32)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
@@ -110,6 +113,8 @@ GEM
     loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    macaddr (1.7.2)
+      systemu (~> 2.6.5)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
@@ -223,6 +228,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    systemu (2.6.5)
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -238,6 +244,8 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
+    uuid (2.3.9)
+      macaddr (~> 1.0)
     web-console (4.0.3)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -289,6 +297,7 @@ DEPENDENCIES
   thin
   turbolinks (~> 5)
   tzinfo-data
+  uuid (~> 2.3, >= 2.3.8)
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

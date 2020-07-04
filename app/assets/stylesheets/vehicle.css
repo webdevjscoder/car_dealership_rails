@@ -3,10 +3,22 @@
     flex-direction: column;
 }
 
-.car-makes {
-    margin-top: 56px;
+
+.car-search-types {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+}
+
+.car-search-types select {
+    margin: 0 5px;
 }
 
 .car-makes ul li {
     list-style: none;
+}
+
+.vehicle-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
 }
