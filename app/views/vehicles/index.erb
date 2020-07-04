@@ -1,0 +1,9 @@
+<div class='car-make-container'>
+    <div class='car-makes'>
+        <% @vehicles.each do |vehicle| %>
+            <ul>
+                <li><%= vehicle.car_make.name %></li>
+            </ul>
+        <% end %>
+    </div>
+</div>
