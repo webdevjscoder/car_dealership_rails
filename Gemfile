@@ -55,3 +55,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Generate Fake Data
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'dotenv'
+gem 'omniauth-github'

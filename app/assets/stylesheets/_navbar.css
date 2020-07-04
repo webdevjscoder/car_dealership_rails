@@ -4,10 +4,8 @@
 }
 
  /* Removes underline from all links */
-
-a:-webkit-any-link {
-    text-decoration: none;
-    color: black;
+a:-webkit-any-link:hover {
+    opacity: 0.75;
 }
 
 /* Header tag */
@@ -32,6 +30,11 @@ a:-webkit-any-link {
    margin-left: 5px;
 }
 
+.logo {
+    text-decoration: none;
+    color: #000;
+}
+
 /* Navbar links container */
 .navbar-links {
     display: flex;
@@ -44,4 +47,9 @@ a:-webkit-any-link {
     border-left: 1px solid #f0f0f0;
     font-weight: bold;
     padding: 0 8px;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: #000;
 }

@@ -1,5 +1,6 @@
 <div class='form-container'>
     <div class='forms'>
+        <%= render 'signup_omniauth' %>
         <h2>Sign Up</h2>
         <% if @user.errors.any? %>
             <% @user.errors.full_messages.each do |msg| %>
