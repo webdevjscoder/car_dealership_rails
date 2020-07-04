@@ -1,5 +1,6 @@
 <div class='form-container'>
     <div class='forms'>
+        <%= render 'signin_omniauth' %>
         <h2>Sign In</h2>
 
         <%= form_for @user, :url => url_for(controller: "sessions", action: "create") do |f| %>

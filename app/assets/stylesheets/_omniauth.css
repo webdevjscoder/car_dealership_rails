@@ -1,0 +1,9 @@
+.github-signin {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.github-link {
+    margin: 0 5px;
+}
