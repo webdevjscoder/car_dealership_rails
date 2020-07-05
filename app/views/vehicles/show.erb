@@ -1,1 +1,22 @@
-<%= @vehicle.car_make.name %>
+<section class='car-info-container'>
+    <div class='car-info-make'>
+        <h1>
+            <%= @vehicle.car_make.name %> |
+            <%= @vehicle.car_model.name %>
+        </h1>
+    </div>
+    <div class='car-image'>
+        <%= image_tag("car-images/#{@vehicle.image}") %>
+    </div>
+    <div class='car-info-text'>
+        <p>MSRP: <%= number_to_currency(@vehicle.inventories[0].price) %></p>
+        <p>Year: <%= @vehicle.year %></p>
+        <p>Engine: <%= @vehicle.engine_type.name %></p>
+        <p>Horsepower: <%= @vehicle.engine.horsepower %>hp</p>
+        <p>Torque: <%= @vehicle.engine.torque %>ft-lbs</p>
+        <p>Fuel Type: <%= @vehicle.fuel_type.name %></p>
+        <p>City MPG: <%= @vehicle.fuel_type.city_mpg %></p>
+        <p>Highway MPG: <%= @vehicle.fuel_type.hwy_mpg %></p>
+        <p>Transmission: <%= @vehicle.transmission.name %></p>
+    </div>
+</section>
