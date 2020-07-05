@@ -7,15 +7,20 @@
         </div>
         <div class='vehicle-list'>
             <% @vehicles.each do |vehicle| %>
-                <div class='vehicle-container'>
-                    <ul>
-                        <li><%= link_to vehicle.car_make.name, vehicle_path(vehicle) %></li>
-                        <li><%= vehicle.year %></li>
-                        <li><%= vehicle.car_model.name %></li>
-                        <li><%= image_tag("car-images/#{vehicle.image}", width: '100px', height: '100px') %></li>
-                    </ul>
-                </div>
+                <%= link_to vehicle_path(vehicle) do %>
+                    <div class='vehicle-container'>
+                        <ul>
+                            <li><%= vehicle.car_make.name %></li> |
+                            <li><%= vehicle.year %></li> |
+                            <li><%= vehicle.car_model.name %></li>
+                        </ul>
+                        <%= image_tag("car-images/#{vehicle.image}", width: '100%', height: '750px') %>
+                    </div>
+                <% end %>
             <% end %>
+            <div class='paginate-container'>
+                <%= will_paginate @vehicles %>
+            </div>
         </div>
     </div>
 </div>

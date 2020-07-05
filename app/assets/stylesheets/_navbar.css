@@ -3,7 +3,7 @@
     font-family: serif;
 }
 
- /* Removes underline from all links */
+ /* Makes all links transparent by 75% */
 a:-webkit-any-link:hover {
     opacity: 0.75;
 }
