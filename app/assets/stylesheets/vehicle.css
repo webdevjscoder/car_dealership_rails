@@ -19,6 +19,31 @@
 }
 
 .vehicle-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(160px, 1fr));
+    margin-top: 46px;
+}
+
+.vehicle-list a {
+    text-decoration: none;
+    color: #000;
+    font-size: 25px;
+}
+
+.vehicle-list ul {
+    padding-left: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.vehicle-list ul li {
+    margin: 0 10px;
+}
+
+.vehicle-list ul li:hover {
+    opacity: .75;
+}
+
+.paginate-container {
+    display: flex;
+    justify-content: center;
 }
