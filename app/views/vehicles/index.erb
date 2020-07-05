@@ -10,8 +10,8 @@
                 <%= link_to vehicle_path(vehicle) do %>
                     <div class='vehicle-container'>
                         <ul>
-                            <li><%= vehicle.car_make.name %></li> |
                             <li><%= vehicle.year %></li> |
+                            <li><%= vehicle.car_make.name %></li> |
                             <li><%= vehicle.car_model.name %></li>
                         </ul>
                         <%= image_tag("car-images/#{vehicle.image}", width: '100%', height: '750px') %>

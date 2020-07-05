@@ -47,3 +47,41 @@
     display: flex;
     justify-content: center;
 }
+
+.car-info-container {
+    display: grid;
+    grid-template-columns: 1000px 270px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "header header"
+      "main sidebar";
+}
+
+.car-info-make {
+    grid-area: header;
+    overflow: hidden;
+    text-align: center;
+    margin-top: 90px;
+}
+
+.car-image {
+    grid-area: main;
+    overflow: hidden;
+}
+
+.car-image img {
+    width: 100%;
+    height: 750px;
+}
+
+.car-info-text {
+    grid-area: sidebar;
+    margin: 50% 0;
+    border-left: 1px solid #d4cdcd;
+    padding: 30px;
+}
+
+.car-info-text p {
+    font-size: 20px;
+}
+
