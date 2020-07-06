@@ -1,0 +1,26 @@
+<div class='car-make-container'>
+    <div class='car-makes'>
+        <div class='car-search-types'>
+            <%= select_tag(:name, options_from_collection_for_select(CarMake.all, :id, :name), prompt: "Select Make") %>
+            <%= select_tag(:name, options_from_collection_for_select(CarModel.all, :id, :name), prompt: "Select Model") %>
+            <%= select_tag(:name, options_from_collection_for_select(EngineType.all, :id, :name), prompt: "Select Engine Type") %>
+        </div>
+        <div class='vehicle-list'>
+            <% @exotic.each do |vehicle_info| %>
+                <%= link_to vehicle_path(vehicle_info) do %>
+                    <div class='vehicle-container'>
+                        <ul>
+                            <li><%= vehicle_info.vehicle.year %></li> |
+                            <li><%= vehicle_info.vehicle.car_make.name %></li> |
+                            <li><%= vehicle_info.vehicle.car_model.name %></li>
+                        </ul>
+                        <%= image_tag("car-images/#{vehicle_info.vehicle.image}", width: '100%', height: '750px') %>
+                    </div>
+                <% end %>
+            <% end %>
+            <div class='paginate-container'>
+                <%= will_paginate @exotic %>
+            </div>
+        </div>
+    </div>
+</div>

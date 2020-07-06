@@ -2,16 +2,22 @@
     <h1>Welcome, <%= current_user.first_name %></h1>
 <% end %>
 <section class='welcome-car-images'>
-    <div class='economical-car-image'>
-        <h2>Economical</h2>
-        <%= image_tag("car-images/2009-audi-a3.jpg", height: '850px', width: '100%') %>
-    </div>
-    <div class='luxury-car-image'>
-        <h2>Luxury</h2>
-        <%= image_tag("car-images/2012-dodge-charger.jpg", height: '850px', width: '100%') %>
-    </div>
-    <div class='exotic-car-image'>
-        <h2>Exotic</h2>
-        <%= image_tag("car-images/2012-lamborghini-gallardo.jpg", height: '850px', width: '100%') %>
-    </div>
+    <%= link_to economical_path do %>
+        <div class='economical-car-image'>
+            <h2>Economical</h2>
+            <%= image_tag("car-images/2009-audi-a3.jpg", height: '850px', width: '100%') %>
+        </div>
+    <% end %>
+    <%= link_to luxury_path do %>
+        <div class='luxury-car-image'>
+            <h2>Luxury</h2>
+            <%= image_tag("car-images/2011-maserati-quattroporte.jpg", height: '850px', width: '100%') %>
+        </div>
+    <% end %>
+    <%= link_to exotic_path do %>
+        <div class='exotic-car-image'>
+            <h2>Exotic</h2>
+            <%= image_tag("car-images/2012-lamborghini-gallardo.jpg", height: '850px', width: '100%') %>
+        </div>
+    <% end %>
 </section>

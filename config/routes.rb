@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :car_makes
   root 'welcome#home'
   resources :vehicles
+  get '/economical-vehicles', to: 'vehicles#economical', as: 'economical'
+  get '/luxury-vehicles', to: 'vehicles#luxury', as: 'luxury'
+  get '/exotic-vehicles', to: 'vehicles#exotic', as: 'exotic'
   get '/welcome/:id', to: 'welcome#home', as: 'welcome'
   resources :users, except: [:new]
   get '/signup', to: 'users#new'
