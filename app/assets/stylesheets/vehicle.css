@@ -85,3 +85,35 @@
     font-size: 20px;
 }
 
+hr {
+    width: 90%;
+}
+
+.add-to-favs-btn {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    margin-left: 6px;
+    margin-top: 22px;
+}
+
+.add-to-favs-btn:hover {
+    opacity: .85;
+}
+
+.buy-now-btn {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    margin: 12px 0 0 40px;
+}
+
+.buy-now-btn:hover {
+    opacity: .85;
+}

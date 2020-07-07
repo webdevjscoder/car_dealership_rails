@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/luxury-vehicles', to: 'vehicles#luxury', as: 'luxury'
   get '/exotic-vehicles', to: 'vehicles#exotic', as: 'exotic'
   get '/welcome/:id', to: 'welcome#home', as: 'welcome'
-  resources :users, except: [:new]
+  resources :users 
+  get '/favorites-list', to: 'users#favorites', as: 'favorites'
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
