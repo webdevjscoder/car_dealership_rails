@@ -18,5 +18,7 @@
         <p>City MPG: <%= @vehicle.fuel_type.city_mpg %></p>
         <p>Highway MPG: <%= @vehicle.fuel_type.hwy_mpg %></p>
         <p>Transmission: <%= @vehicle.transmission.name %></p>
+        <button type='submit' name='vehicle' value="<%= @vehicle.id %>" class='add-to-favs-btn'>ADD TO FAVORITES</button>
+        <button type='submit' name='vehicle' value="<%= @vehicle.id %>" class='buy-now-btn'>BUY NOW</button>
     </div>
 </section>

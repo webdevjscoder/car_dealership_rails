@@ -1,0 +1,19 @@
+.favorites-list a {
+    position: relative;
+    bottom: 2px;
+}
+
+.favorites-list img {
+    position: relative;
+    top: 2px;
+}
+
+.shop-cart a {
+    position: relative;
+    bottom: 2px;
+}
+
+.shop-cart img {
+    position: relative;
+    top: 3px;
+}

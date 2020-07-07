@@ -1,8 +1,8 @@
 <div class='car-make-container'>
     <div class='car-makes'>
         <div class='car-search-types'>
-            <%= select_tag(:name, options_from_collection_for_select(CarMake.all, :id, :name), prompt: "Select a Make") %>
-            <%= select_tag(:name, options_from_collection_for_select(CarModel.all, :id, :name), prompt: "Select a Model") %>
+            <%= select_tag(:name, options_from_collection_for_select(CarMake.all, :id, :name), prompt: "Select Make") %>
+            <%= select_tag(:name, options_from_collection_for_select(CarModel.all, :id, :name), prompt: "Select Model") %>
             <%= select_tag(:name, options_from_collection_for_select(EngineType.all, :id, :name), prompt: "Select Engine Type") %>
         </div>
         <div class='vehicle-list'>
@@ -16,6 +16,7 @@
                         </ul>
                         <%= image_tag("car-images/#{vehicle.image}", width: '100%', height: '750px') %>
                     </div>
+                    <hr>
                 <% end %>
             <% end %>
             <div class='paginate-container'>

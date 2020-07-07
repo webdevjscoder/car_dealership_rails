@@ -8,8 +8,13 @@
                 <li class='shop-cart'><%= link_to vehicles_path do %>
                     <%= 'Shop' %> <%= image_tag("https://img.icons8.com/material-sharp/16/000000/shopping-cart.png") %>
                 <% end %>
-                <li><%= link_to 'Sign In', signin_path %></li>
-                <li><%= link_to 'Sign Up', signup_path %></li>
+                </li>
+                <li class='favorites-list'><%= link_to favorites_path do %>
+                    <%= 'Favorites' %> <%= image_tag("https://img.icons8.com/android/16/000000/star.png") %>
+                <% end %>
+                </li>
+                <li><%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %></li>
+                <li><%= link_to 'Log Out', logout_path %></li>
               </ul>
             </nav>
         </div>

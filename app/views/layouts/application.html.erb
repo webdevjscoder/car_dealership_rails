@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <% if !logged_in? %>
+      <%= render "layouts/navbar" %>
+    <% else %>
+      <%= render "layouts/signedin_nav" %>
+    <% end %>
       <% flash.each do |msg| %>
         <%= msg %>
       <% end %>
