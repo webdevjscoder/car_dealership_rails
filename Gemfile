@@ -58,8 +58,8 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'dotenv'
 gem 'omniauth-github'
 gem 'thin'
 gem 'uuid', '~> 2.3', '>= 2.3.8'
 gem 'will_paginate', '~> 3.1.0'
+gem 'dotenv-rails', groups: [:development, :test]
