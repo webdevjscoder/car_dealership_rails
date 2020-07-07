@@ -12,12 +12,15 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
+  post '/logout', to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
 
   # Github route
-  get '/auth/github/callback', to: 'sessions#create'
+  get '/auth/github', as: 'github'
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   
   # Facebook route
-  # get '/auth/facebook/callback', to: 'sessions#create'
+  get '/auth/facebook', as: 'facebook'
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

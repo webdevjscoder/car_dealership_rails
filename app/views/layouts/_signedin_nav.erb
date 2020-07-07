@@ -13,7 +13,10 @@
                     <%= 'Favorites' %> <%= image_tag("https://img.icons8.com/android/16/000000/star.png") %>
                 <% end %>
                 </li>
-                <li><%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %></li>
+                <li><%= link_to user_path(current_user) do %>
+                    <%= 'Hello, '%> <%= current_user.provider.present? ? current_user.name : current_user.first_name %>
+                  <% end %>
+                </li>
                 <li><%= link_to 'Log Out', logout_path %></li>
               </ul>
             </nav>
