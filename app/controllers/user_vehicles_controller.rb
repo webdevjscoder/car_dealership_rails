@@ -21,5 +21,4 @@ class UserVehiclesController < ApplicationController
         @vehicle = Vehicle.find_by_id(params[:id])
         redirect_to root_path
     end
-
 end
