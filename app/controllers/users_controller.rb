@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     end
 
     def favorites
+        @user_vehicles = current_user.vehicles
     end
 
     private

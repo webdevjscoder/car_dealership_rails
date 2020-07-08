@@ -1,1 +1,7 @@
 <h1>You are in the favorites page!</h1>
+
+<% @user_vehicles.each do |vehicle| %>
+    <ul>
+        <%= vehicle.car_make.name %>
+    </ul>
+<% end %>
