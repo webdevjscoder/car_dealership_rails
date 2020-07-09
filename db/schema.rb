@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_195239) do
+ActiveRecord::Schema.define(version: 2020_07_08_223058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_07_07_195239) do
     t.integer "transmission_id"
     t.integer "engine_id"
     t.string "image", limit: 2048
+    t.boolean "is_purchased", default: false
   end
 
   add_foreign_key "engine_types", "drive_lines", name: "engine_types_drive_line_id_fkey"

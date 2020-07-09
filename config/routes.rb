@@ -2,16 +2,25 @@ Rails.application.routes.draw do
   resources :car_models
   resources :car_makes
   root 'welcome#home'
-  resources :vehicles
+  resources :vehicles do
+    member do
+      get '/confirmation/:id', to: 'user_vehicles#confirmation', as: 'confirmation'
+      post '/confirmation/:id/purchase/:id', to: 'vehicles#purchase', as: 'purchase'
+    end
+  end
   resources :user_vehicles, only: [:create]
+  post '/remove-vehicle', to: 'user_vehicles#remove'
   post '/checkout', to: 'user_vehicles#checkout'
-  get '/confirmation/:id', to: 'user_vehicles#confirmation', as: 'confirmation'
   get '/economical-vehicles', to: 'vehicles#economical', as: 'economical'
   get '/luxury-vehicles', to: 'vehicles#luxury', as: 'luxury'
   get '/exotic-vehicles', to: 'vehicles#exotic', as: 'exotic'
   get '/welcome/:id', to: 'welcome#home', as: 'welcome'
-  resources :users 
-  get '/favorites-list', to: 'users#favorites', as: 'favorites'
+  resources :users do
+    member do
+      get '/favorites-list', to: 'users#favorites', as: 'favorites'
+    end
+  end
+  get '/users/:id/purchases', to: 'users#purchases', as: 'purchases'
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'

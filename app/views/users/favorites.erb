@@ -1,7 +1,19 @@
-<h1>You are in the favorites page!</h1>
-
 <% @user_vehicles.each do |vehicle| %>
-    <ul>
-        <%= vehicle.car_make.name %>
-    </ul>
+    <div class='favorites-car-list'>
+        <ul>
+            <li><%= vehicle.car_make.name %></li>
+            <li><%= vehicle.car_model.name %></li>
+            <li><%= vehicle.year %></li>
+        </ul>
+        <%= image_tag("car-images/#{vehicle.image}", width: '75%', height: '750px') %>
+    </div>
+    <%= form_for vehicle, :url => url_for(controller: "user_vehicles", action: "remove"), method: 'Post' do |f| %>
+        <%= f.hidden_field 'id', value: "#{vehicle.id}" %>
+        <%= f.submit 'REMOVE FROM FAVORITES', class: 'remove-from-favs-btn' %>
+    <% end %>
+    <%= form_for vehicle, :url => url_for(controller: "user_vehicles", action: "checkout"), method: 'Post' do |f| %>
+        <%= f.hidden_field 'id', value: "#{vehicle.id}"%>
+        <%= f.submit 'BUY NOW', class: 'buy-now-btn' %>
+    <% end %>
+    <button><%= link_to 'View', vehicle_path(vehicle), class: 'view-button' %></button>
 <% end %>

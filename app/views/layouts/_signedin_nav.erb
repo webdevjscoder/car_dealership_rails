@@ -1,7 +1,9 @@
       <header class='default-layout-header'>
           <div class='main-navbar-container'>
             <h1 class='site_logo'>
-              <%= link_to 'BCD', root_path, {class: 'logo'} %>
+              <%= link_to welcome_path(current_user), {class: 'logo' } do %>
+                <%= 'BCD' %>
+              <% end %>
             </h1>
             <nav class='main-navbar'>
               <ul class='navbar-links'>
@@ -9,7 +11,7 @@
                     <%= 'Shop' %> <%= image_tag("https://img.icons8.com/material-sharp/16/000000/shopping-cart.png") %>
                 <% end %>
                 </li>
-                <li class='favorites-list'><%= link_to favorites_path do %>
+                <li class='favorites-list'><%= link_to favorites_user_path(current_user) do %>
                     <%= 'Favorites' %> <%= image_tag("https://img.icons8.com/android/16/000000/star.png") %>
                 <% end %>
                 </li>

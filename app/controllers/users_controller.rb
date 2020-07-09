@@ -22,6 +22,10 @@ class UsersController < ApplicationController
         @user_vehicles = current_user.vehicles
     end
 
+    def purchases
+        @purchases = current_user.vehicles
+    end
+
     private
 
     def user_params(*args)
