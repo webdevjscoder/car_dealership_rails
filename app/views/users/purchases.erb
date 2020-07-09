@@ -1,0 +1,7 @@
+<h1>Purchases</h1>
+
+<% @purchases.each do |vehicle| %>
+    <% if vehicle.is_purchased == true %>
+        <%= vehicle.car_make.name %>
+    <% end %>
+<% end %>
