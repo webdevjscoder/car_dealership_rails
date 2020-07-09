@@ -2,6 +2,8 @@
 
 <% @purchases.each do |vehicle| %>
     <% if vehicle.is_purchased == true %>
-        <%= vehicle.car_make.name %>
+        <%= link_to vehicle_path(vehicle) do %>
+            <%= vehicle.car_make.name %>
+        <% end %>
     <% end %>
 <% end %>

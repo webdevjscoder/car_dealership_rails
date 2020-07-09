@@ -1,15 +1,13 @@
 <div class='form-container'>
     <div class='forms'>
-        <%= render 'signin_omniauth' %>
-        <h2>Sign In</h2>
+        <h2>Admin Sign In</h2>
 
-        <%= form_for @user, :url => url_for(controller: "sessions", action: "create") do |f| %>
+        <%= form_for @admin, :url => url_for(controller: "sessions", action: "create_admin") do |f| %>
             <%= f.label :email %>
             <%= f.email_field :email, placeholder: 'example@email.com', required: true %><br>
             <%= f.label :password %>
             <%= f.password_field :password, placeholder: 'password', required: true %><br>
             <%= f.submit 'Sign In'%>
         <% end %>
-        <span class='not-signup-link'><%= link_to "Don't have an account? Sign Up", signup_path %></span>
     </div>
 </div>
