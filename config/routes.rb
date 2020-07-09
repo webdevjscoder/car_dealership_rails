@@ -15,13 +15,18 @@ Rails.application.routes.draw do
   get '/luxury-vehicles', to: 'vehicles#luxury', as: 'luxury'
   get '/exotic-vehicles', to: 'vehicles#exotic', as: 'exotic'
   get '/welcome/:id', to: 'welcome#home', as: 'welcome'
-  resources :users do
+  resources :users, only: [:show] do
     member do
       get '/favorites-list', to: 'users#favorites', as: 'favorites'
     end
   end
   get '/users/:id/purchases', to: 'users#purchases', as: 'purchases'
+  get '/admin/signup', to: 'users#new_admin'
+  post '/admin/signup', to: 'users#create_admin'
+  get '/admin/signin', to: 'sessions#new_admin'
+  post '/admin/signin', to: 'sessions#create_admin'
   get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'

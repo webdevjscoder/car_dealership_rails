@@ -1,0 +1,18 @@
+<h2>Admin Sign Up</h2>
+    <% if @admin.errors.any? %>
+        <% @admin.errors.full_messages.each do |msg| %>
+            <%= msg %><br>
+        <% end %>
+    <% end%>
+
+    <%= form_for @admin, url: admin_signup_path, html: { method: :post } do |f| %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, placeholder: 'Ex. John' %><br>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, placeholder: 'Ex. Smith' %><br>
+        <%= f.label :email %>
+        <%= f.email_field :email, placeholder: 'Example@email.com' %><br>
+        <%= f.label :password %>
+        <%= f.password_field :password, placeholder: 'Password' %><br>
+        <%= f.submit 'Submit' %>
+    <% end %>
