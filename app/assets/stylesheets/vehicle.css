@@ -117,3 +117,15 @@ hr {
 .buy-now-btn:hover {
     opacity: .85;
 }
+
+.image-upload {
+    display: flex;
+    justify-content: center;
+    height: 48vh;
+    align-items: center;
+}
+
+.form-upload {
+    display: flex;
+    margin-top: 150px;
+}

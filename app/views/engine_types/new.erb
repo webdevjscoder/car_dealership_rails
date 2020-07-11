@@ -1,0 +1,11 @@
+<h1>Car Engine Type</h1>
+
+<%= form_for @engine_type do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :drive_line %>
+    <%= f.collection_select(:drive_line_id, DriveLine.all, :id, :name, prompt: 'Select Drive Line') %><br>
+    <%= f.label :transmission_type %>
+    <%= f.collection_select(:transmission_type_id, TransmissionType.all, :id, :name, prompt: 'Select Transmission Type') %><br>
+    <%= f.submit %>
+<% end %>

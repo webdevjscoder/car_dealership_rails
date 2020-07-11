@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   resources :car_models
   resources :car_makes
+  resources :drive_lines
+  resources :engines
+  resources :engine_types
+  resources :fuel_types
+  resources :transmissions
+  resources :transmission_types
+  resources :inventories
   root 'welcome#home'
   resources :vehicles do
     member do
@@ -8,6 +15,7 @@ Rails.application.routes.draw do
       post '/confirmation/:id/purchase/:id', to: 'vehicles#purchase', as: 'purchase'
     end
   end
+  get '/upload_image', to: 'vehicles#upload_image'
   resources :user_vehicles, only: [:create]
   post '/remove-vehicle', to: 'user_vehicles#remove'
   post '/checkout', to: 'user_vehicles#checkout'

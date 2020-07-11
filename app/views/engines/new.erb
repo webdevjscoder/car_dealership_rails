@@ -1,0 +1,9 @@
+<h1>Car Engine</h1>
+
+<%= form_for @engine do |f| %>
+    <%= f.label :horsepower %>
+    <%= f.text_field :horsepower %><br>
+    <%= f.label :torque %>
+    <%= f.text_field :torque %><br>
+    <%= f.submit %>
+<% end %>

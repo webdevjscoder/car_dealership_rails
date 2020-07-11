@@ -1,0 +1,29 @@
+<div class='add-new-car-container'>
+    <div class='add-new-car-form'>
+        <h1>Add From Existing Vehicle Data</h1>
+            <%= form_for @vehicle do |f| %>
+                <%= f.label :year %>
+                <%= f.collection_select(:year, Vehicle.select("DISTINCT(YEAR)"), :year, :year, prompt: 'Select Year') %><br>
+                <%= f.label :car_make %>
+                <%= f.collection_select(:car_make_id, CarMake.all, :id, :name, prompt: 'Select Make') %><br>
+                <%= f.label :car_model %>
+                <%= f.collection_select(:car_model_id, CarModel.all, :id, :name, prompt: 'Select Model') %><br>
+                <%= f.label :engine_type %>
+                <%= f.collection_select(:engine_type_id, EngineType.all, :id, :name, prompt: 'Select Engine Type') %><br>
+                <%= f.label :fuel_type %>
+                <%= f.collection_select(:fuel_type_id, FuelType.all, :id, :name, prompt: 'Select Fuel Type') %><br>
+                <%= f.label :transmission %>
+                <%= f.collection_select(:transmission_id, Transmission.all, :id, :name, prompt: 'Select Transmission') %><br>
+                <%= f.label :engine_horsepower %>
+                <%= f.collection_select(:engine_id, Engine.all, :id, :horsepower, prompt: 'Select Engine Horsepower') %><br>
+                <%= f.label :image %>
+                <%= f.collection_select(:image, Vehicle.select("DISTINCT(IMAGE)"), :image, :image, prompt: 'Select Image') %><br>
+                <%= f.fields_for :inventories[0] do |e| %>
+                    <%= e.label :price %>
+                    <%= e.text_field :price %>
+                <% end %>
+                <%= f.submit %>
+            <% end %>
+            <%# link_to 'Create a New Vehicle', new_car_make_path %>
+    </div>
+</div>
