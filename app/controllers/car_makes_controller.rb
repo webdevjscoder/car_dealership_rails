@@ -5,7 +5,9 @@ class CarMakesController < ApplicationController
     end
 
     def create
-        @car_make = CarMake.new(car_make_params(:make_name))
+        byebug
+        @car_make = CarMake.new(car_make_params(:name))
+        byebug
     end
 
     private

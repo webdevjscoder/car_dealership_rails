@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :initialize_new_user, only: [:new, :create]
+    before_action :initialize_new_admin, only: [:new_admin, :create_admin]
 
     def new
         @user = User.new
@@ -48,5 +50,13 @@ class UsersController < ApplicationController
 
     def user_params(*args)
         params.require(:user).permit(*args)
+    end
+
+    def initialize_new_user
+        @user = User.new
+    end
+
+    def initialize_new_admin
+        @admin = User.new
     end
 end

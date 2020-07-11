@@ -1,0 +1,27 @@
+      <header class='default-layout-header'>
+          <div class='main-navbar-container'>
+            <h1 class='site_logo'>
+              <%= link_to welcome_path(current_user), {class: 'logo' } do %>
+                <%= 'BCD' %>
+              <% end %>
+            </h1>
+            <nav class='main-navbar'>
+              <ul class='navbar-links'>
+                <li><%= link_to 'Add Vehicle', new_vehicle_path %></li>
+                <li class='shop-cart'><%= link_to vehicles_path do %>
+                    <%= 'Shop' %> <%= image_tag("https://img.icons8.com/material-sharp/16/000000/shopping-cart.png") %>
+                <% end %>
+                </li>
+                <li class='favorites-list'><%= link_to favorites_user_path(current_user) do %>
+                    <%= 'Favorites' %> <%= image_tag("https://img.icons8.com/android/16/000000/star.png") %>
+                <% end %>
+                </li>
+                <li><%= link_to user_path(current_user) do %>
+                    <%= 'Hello, '%> <%= current_user.provider.present? ? current_user.name : current_user.first_name %>
+                  <% end %>
+                </li>
+                <li><%= link_to 'Log Out', logout_path %></li>
+              </ul>
+            </nav>
+        </div>
+      </header>

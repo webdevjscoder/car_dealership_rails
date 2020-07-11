@@ -1,7 +1,13 @@
-<h1>Make for new car</h1>
+<h1>Car Make</h1>
 
 <%= form_for @car_make do |f| %>
     <%= f.label :name %>
-    <%= f.collection_select :name, CarMake.all, :id, :name, :include_blank => 'Select Make' %><br>
-    <%= f.submit %>
+    <%= f.text_field :id, list: "car_makes_autocomplete" %>
+    <datalist id="car_makes_autocomplete">
+        <% CarMake.all.each do |car_make| %>
+            <option value="<%= car_make.name %>">
+            <%= f.hidden_field :car_make_id, :value => "#{car_make.id}" %>
+        <% end %>
+    </datalist>
+    <%= f.submit 'Create'%>
 <% end %>
