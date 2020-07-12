@@ -1,9 +1,45 @@
 <div class='add-new-car-container'>
-    <div class='add-new-car-form'>
+    <div class='new-car-title'>
         <h1>Add From Existing Vehicle Data</h1>
-            <%= form_for @vehicle do |f| %>
+    </div>
+    
+            <div class='car-links'>
+                <div class='links'>
+                    <%= link_to 'New Car Make', new_car_make_path %>
+                </div>
+                <hr>
+                <div class='links'>
+                    <%= link_to 'New Car Model', new_car_model_path %>
+                </div>
+                <hr>
+                <div class='links'>
+                    <%= link_to 'New Engine Type', new_engine_type_path %>
+                </div>
+                <hr>
+                <div class='links'>
+                    <%= link_to 'New Fuel Type', new_fuel_type_path %>
+                </div>
+                <hr>
+                <div class='links'>
+                    <%= link_to 'New Transmission', new_transmission_path %>
+                </div>
+                <hr>
+                <div class='links'>
+                    <%= link_to 'New Engine', new_engine_path %>
+                </div>
+            </div>
+            <div class='new-car-info'>
+            <%= form_for @vehicle, :html => {:class => 'new-car-form'} do |f| %>
                 <%= f.label :year %>
-                <%= f.collection_select(:year, Vehicle.select("DISTINCT(YEAR)"), :year, :year, prompt: 'Select Year') %><br>
+                <% counter = 1990 %>
+                <select name="vehicle[year]" id="vehicle_year_id">
+                    <option>Select Year</option>
+                    <% until counter == 2021 %>
+                        <option value="<%=counter%>"><%= "#{counter}" %></option>
+                        <% counter += 1 %>
+                    <% end %>
+                </select>
+                <br>
                 <%= f.label :car_make %>
                 <%= f.collection_select(:car_make_id, CarMake.all, :id, :name, prompt: 'Select Make') %><br>
                 <%= f.label :car_model %>
@@ -11,19 +47,15 @@
                 <%= f.label :engine_type %>
                 <%= f.collection_select(:engine_type_id, EngineType.all, :id, :name, prompt: 'Select Engine Type') %><br>
                 <%= f.label :fuel_type %>
-                <%= f.collection_select(:fuel_type_id, FuelType.all, :id, :name, prompt: 'Select Fuel Type') %><br>
+                <%= f.collection_select(:fuel_type_id, FuelType.all, :id, :selection_name, prompt: 'Select Fuel Type') %><br>
                 <%= f.label :transmission %>
                 <%= f.collection_select(:transmission_id, Transmission.all, :id, :name, prompt: 'Select Transmission') %><br>
                 <%= f.label :engine_horsepower %>
-                <%= f.collection_select(:engine_id, Engine.all, :id, :horsepower, prompt: 'Select Engine Horsepower') %><br>
-                <%= f.label :image %>
-                <%= f.collection_select(:image, Vehicle.select("DISTINCT(IMAGE)"), :image, :image, prompt: 'Select Image') %><br>
-                <%= f.fields_for :inventories[0] do |e| %>
-                    <%= e.label :price %>
-                    <%= e.text_field :price %>
+                <%= f.collection_select(:engine_id, Engine.all, :id, :engine_select, prompt: 'Select Engine Horsepower') %><br>
+                <%= f.fields_for :inventories do |inventory| %>
+                    <%= inventory.label :price %>
+                    <%= inventory.text_field :price %>
                 <% end %>
-                <%= f.submit %>
+                <%= f.submit 'Create Vehicle', class: 'new-car-submit' %>
             <% end %>
-            <%# link_to 'Create a New Vehicle', new_car_make_path %>
-    </div>
-</div>
+            </div>

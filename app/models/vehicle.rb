@@ -9,8 +9,9 @@ class Vehicle < ApplicationRecord
     accepts_nested_attributes_for :inventories
     has_many :user_vehicles
     has_many :users, through: :user_vehicles
+    validates_associated :inventories
 
-    def self.save(upload)
+    def self.save(upload, id)
         name = upload['datafile'].original_filename
         extension = name.split('.').last
         uuid = UUID.new
@@ -21,6 +22,13 @@ class Vehicle < ApplicationRecord
         path = File.join(directory, filename)
         # write the file
         File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
+        vehicle = self.find_by_id(id)
+        byebug
+        vehicle.update(image: filename)
+        vehicle.inventories[0].price.to_i
+        byebug
+        vehicle.save
+        byebug
     end
 
     def self.images

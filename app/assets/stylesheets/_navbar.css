@@ -10,7 +10,7 @@ a:-webkit-any-link:hover {
 
 /* Header tag */
 .default-layout-header {
-    background: transparent;
+    background: #fff;
     border-bottom: 1px solid #f0f0f0;
     height: 56px;
     position: fixed;

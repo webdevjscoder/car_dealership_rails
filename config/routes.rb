@@ -15,7 +15,8 @@ Rails.application.routes.draw do
       post '/confirmation/:id/purchase/:id', to: 'vehicles#purchase', as: 'purchase'
     end
   end
-  get '/upload_image', to: 'vehicles#upload_image'
+  get '/upload_image/:id', to: 'vehicles#upload_image', as: 'upload_image'
+  post '/add_image/:id', to: 'vehicles#add_image', as: 'add_image'
   resources :user_vehicles, only: [:create]
   post '/remove-vehicle', to: 'user_vehicles#remove'
   post '/checkout', to: 'user_vehicles#checkout'
