@@ -1,37 +1,42 @@
 class VehiclesController < ApplicationController
-    before_action :initialize_new_vehicle, only: [:new, :create]
+    before_action :initialize_new_vehicle, only: [:new]
 
     def index
         @vehicles = Vehicle.paginate(page: params[:page], per_page: 5)
     end
 
     def new
+        @vehicle = Vehicle.new
+        @vehicle.inventories.new
     end
 
     def upload_image
-        @images = Vehicle.images
+    end
+
+    def add_image
+        image = Vehicle.save(params[:upload], params[:id])
+        @vehicle = Vehicle.last
+        byebug
+        redirect_to vehicle_path(@vehicle)
     end
 
     def create
-        if params[:upload]
-            byebug
-            image = Vehicle.save( params[:upload])
-            vehicle = Vehicle.new(vehicle_params(:car_make_id, :car_model_id, :year, :engine_type_id, :fuel_type_id, :transmission_id, :engine_id, :image))
+        # params[:vehicle][:inventories_attributes]['0'][:price].to_i
+        vehicle = Vehicle.new(vehicle_params(:car_make_id, :car_model_id, :year, :engine_type_id, :fuel_type_id, :transmission_id, :engine_id, inventories_attributes: [:id, :price]))
+        byebug
+        if vehicle.save
+            redirect_to upload_image_path(vehicle)
         else
-            vehicle = Vehicle.find_or_initialize_by(vehicle_params(:car_make_id, :car_model_id, :year, :engine_type_id, :fuel_type_id, :transmission_id, :engine_id, :image))
-            byebug
-            if vehicle.id.present? && vehicle.inventories[0].price == params[:vehicle][:i][:price]
-                flash[:notice] = 'Vehicle already exists. Add to inventory quantity instead.'
-                render :new
-            else
-                byebug
-                vehicle.update(is_purchased: false)
-                vehicle.inventories[0].update(price: params[:vehicle][:i][:price])
-                byebug
-                vehicle.save
-                redirect_to vehicle_path(vehicle)
-            end
+            render :new
         end
+    end
+
+    def edit
+        @vehicle = Vehicle.find_by_id(params[:vehicle][:id])
+    end
+
+    def update
+        byebug
     end
 
     def show

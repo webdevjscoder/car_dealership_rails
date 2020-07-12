@@ -6,7 +6,11 @@
         </h1>
     </div>
     <div class='car-image'>
-        <%= image_tag("car-images/#{@vehicle.image}") %>
+        <% if @vehicle.image != nil %>
+            <%= image_tag("car-images/#{@vehicle.image}", width: '100%', height: '750px') %>
+        <% else %>
+            <%= image_tag("http://placekitten.com/1768/750", width: '100%', height: '750px') %>
+        <% end %>
     </div>
     <div class='car-info-text'>
         <p>MSRP: <%= number_to_currency(@vehicle.inventories[0].price) %></p>
@@ -25,6 +29,10 @@
         <%= form_for @vehicle, :url => url_for(controller: "user_vehicles", action: "checkout"), method: 'Post' do |f| %>
             <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
             <%= f.submit 'BUY NOW', class: 'buy-now-btn' %>
+        <% end %>
+        <%= form_for @vehicle, :url => url_for(controller: "vehicles", action: "edit"), method: 'Get' do |f| %>
+            <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
+            <%= f.submit 'UPDATE', class: 'update-btn' %>
         <% end %>
     </div>
 </section>
