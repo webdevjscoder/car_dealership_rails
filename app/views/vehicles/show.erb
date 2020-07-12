@@ -30,9 +30,11 @@
             <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
             <%= f.submit 'BUY NOW', class: 'buy-now-btn' %>
         <% end %>
-        <%= form_for @vehicle, :url => url_for(controller: "vehicles", action: "edit"), method: 'Get' do |f| %>
-            <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
-            <%= f.submit 'UPDATE', class: 'update-btn' %>
+        <% if current_user.admin == true %>
+            <%= form_for @vehicle, :url => url_for(controller: "vehicles", action: "edit"), method: 'Get' do |f| %>
+                <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
+                <%= f.submit 'UPDATE', class: 'update-btn' %>
+            <% end %>
         <% end %>
     </div>
 </section>

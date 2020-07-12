@@ -23,12 +23,9 @@ class Vehicle < ApplicationRecord
         # write the file
         File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
         vehicle = self.find_by_id(id)
-        byebug
         vehicle.update(image: filename)
         vehicle.inventories[0].price.to_i
-        byebug
         vehicle.save
-        byebug
     end
 
     def self.images

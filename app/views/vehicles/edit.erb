@@ -3,7 +3,14 @@
         <h1>Edit Vehicle</h1>
         <%= form_for @vehicle do |f| %>
                 <%= f.label :year %>
-                <%= f.collection_select(:year, Vehicle.select("DISTINCT(YEAR)"), :year, :year, prompt: 'Select Year') %><br>
+                <% counter = 1990 %>
+                <select name="vehicle[year]" id="vehicle_year_id">
+                    <option><%= @vehicle.year %></option>
+                    <% until counter == 2021 %>
+                        <option value="<%=counter%>"><%= "#{counter}" %></option>
+                        <% counter += 1 %>
+                    <% end %>
+                </select>
                 <%= f.label :car_make %>
                 <%= f.collection_select(:car_make_id, CarMake.all, :id, :name, prompt: 'Select Make') %><br>
                 <%= f.label :car_model %>
@@ -11,18 +18,25 @@
                 <%= f.label :engine_type %>
                 <%= f.collection_select(:engine_type_id, EngineType.all, :id, :name, prompt: 'Select Engine Type') %><br>
                 <%= f.label :fuel_type %>
-                <%= f.collection_select(:fuel_type_id, FuelType.all, :id, "#{name} - City #{city_mpg} | HWY #{hwy_mpg}", prompt: 'Select Fuel Type') %><br>
+                <%= f.collection_select(:fuel_type_id, FuelType.all, :id, :selection_name, prompt: 'Select Fuel Type') %><br>
                 <%= f.label :transmission %>
                 <%= f.collection_select(:transmission_id, Transmission.all, :id, :name, prompt: 'Select Transmission') %><br>
                 <%= f.label :engine_horsepower %>
-                <%= f.collection_select(:engine_id, Engine.all, :id, :horsepower, prompt: 'Select Engine Horsepower') %><br>
-                <%= f.label :image %>
-                <%= f.collection_select(:image, Vehicle.select("DISTINCT(IMAGE)"), :image, :image, prompt: 'Select Image') %><br>
-                <%= f.fields_for @vehicle.inventories[0] do |e| %>
-                    <%= e.label :price %>
-                    <%= e.text_field :price %>
+                <%= f.collection_select(:engine_id, Engine.all, :id, :engine_select, prompt: 'Select Engine Horsepower') %><br>
+                <%= f.fields_for :inventories do |inventory| %>
+                    <%= inventory.label :price %>
+                    <%= inventory.text_field :price %>
                 <% end %>
+                <%= f.hidden_field :vehicle, :value => @vehicle.id %>
                 <%= f.submit %>
+                <div class='edit-image'>
+                    <%= link_to 'Upload New Image', upload_image_path(@vehicle) %>
+                </div>
+                <div class='delete-vehicle-button'>
+                    <%= form_for @vehicle, method: 'Delete' do |f| %>
+                        <%= f.submit 'Delete Vehicle', data: { confirm: "Are you sure you want to delete with vehicle?" }%>
+                    <% end %>
+                </div>
             <% end %>
     </div>
 </div>

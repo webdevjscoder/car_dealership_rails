@@ -1,12 +1,13 @@
 class VehiclesController < ApplicationController
-    before_action :initialize_new_vehicle, only: [:new]
+    before_action :initialize_new_vehicle, only: [:new, :create]
+    before_action :find_vehicle, only: [:edit]
+    before_action :admin_user, only: [:new, :upload_image, :add_image, :create, :edit, :update]
 
     def index
         @vehicles = Vehicle.paginate(page: params[:page], per_page: 5)
     end
 
     def new
-        @vehicle = Vehicle.new
         @vehicle.inventories.new
     end
 
@@ -16,14 +17,11 @@ class VehiclesController < ApplicationController
     def add_image
         image = Vehicle.save(params[:upload], params[:id])
         @vehicle = Vehicle.last
-        byebug
         redirect_to vehicle_path(@vehicle)
     end
 
     def create
-        # params[:vehicle][:inventories_attributes]['0'][:price].to_i
         vehicle = Vehicle.new(vehicle_params(:car_make_id, :car_model_id, :year, :engine_type_id, :fuel_type_id, :transmission_id, :engine_id, inventories_attributes: [:id, :price]))
-        byebug
         if vehicle.save
             redirect_to upload_image_path(vehicle)
         else
@@ -32,15 +30,28 @@ class VehiclesController < ApplicationController
     end
 
     def edit
-        @vehicle = Vehicle.find_by_id(params[:vehicle][:id])
     end
 
     def update
-        byebug
+        vehicle = Vehicle.find_by_id(params[:id])
+        if vehicle
+            vehicle.update_attributes((vehicle_params(:car_make_id, :car_model_id, :year, :engine_type_id, :fuel_type_id, :transmission_id, :engine_id, inventories_attributes: [:id, :price])))
+            vehicle.save
+            redirect_to vehicle_path(vehicle)
+        else
+            render :edit
+        end
     end
 
     def show
         @vehicle = Vehicle.find_by_id(params[:id])
+    end
+
+    def destroy
+        vehicle = Vehicle.find_by_id(params[:id])
+        vehicle.inventories[0].destroy
+        vehicle.destroy
+        redirect_to vehicles_path
     end
 
     def economical
@@ -76,5 +87,9 @@ class VehiclesController < ApplicationController
 
     def initialize_new_vehicle
         @vehicle = Vehicle.new
+    end
+
+    def find_vehicle
+        @vehicle = Vehicle.find_by_id(params[:vehicle][:id])
     end
 end
