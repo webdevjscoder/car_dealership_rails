@@ -1,0 +1,16 @@
+<div class='user-info-container'>
+        <div class='user-info'>
+        <h2>Edit Profile</h2>
+            <%= form_for @user do |f| %>
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name %><br>
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name %><br>
+                <%= f.label :email %>
+                <%= f.text_field :email %><br>
+                <%= f.label :phone %>
+                <%= f.text_field :phone, placeholder: '1+(500)-555-9595' %><br>
+                <%= f.submit "UPDATE", class: 'update-user-btn'%>
+            <% end %>
+        </div>
+</div>

@@ -24,11 +24,12 @@ Rails.application.routes.draw do
   get '/luxury-vehicles', to: 'vehicles#luxury', as: 'luxury'
   get '/exotic-vehicles', to: 'vehicles#exotic', as: 'exotic'
   get '/welcome/:id', to: 'welcome#home', as: 'welcome'
-  resources :users, only: [:show] do
+  resources :users do
     member do
       get '/favorites-list', to: 'users#favorites', as: 'favorites'
     end
   end
+  get '/users/:id/change-password', to: 'users#change_password', as: 'change_password'
   get '/users/:id/purchases', to: 'users#purchases', as: 'purchases'
   get '/admin/signup', to: 'users#new_admin'
   post '/admin/signup', to: 'users#create_admin'
