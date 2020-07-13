@@ -1,8 +1,45 @@
+.provider-signin {
+    text-align: center;
+    padding: 15px;
+    width: 268px;
+    border-radius: 30px;
+    margin: 5px 0;
+    background-color: #3e6ae1;
+    color: #fff;
+}
+
+.facebook-provider {
+    margin-bottom: 50px;
+}
+
+.github-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.github-link:hover {
+    opacity: .85;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.facebook-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.facebook-link:hover {
+    opacity: .85;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .form-container {
     display: flex;
     justify-content: center;
-    height: 120vh;
+    height: 140vh;
     align-items: center;
+    flex-direction: column;
 }
 
 .forms {
@@ -17,33 +54,35 @@
     margin-bottom: 20px;
 }
 
-form {
+#new_user {
     display: flex;
     flex-direction: column;
 }
 
-form label {
+#new_user label {
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-form  input[type='text'], 
+#new_user input[type='text'], 
 input[type='email'],
 input[type='password'] {
     padding: 5px;
     border-radius: 5px;
 }
 
-form input[type='submit'] {
-    width: fit-content;
-    display: flex;
-    align-self: center;
-    margin: 16px 0;
-    background-color: #d4cdcd;
-    border-color: #d4cdcd;
-    border-radius: 3px;
+#new_user input[type='submit'] {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    margin-top: 16px;
+    margin-bottom: 15px;
 }
 
-form input[type='submit']:hover {
-    background-color: #ada5a5;
+#new_user input[type='submit']:hover {
+    opacity: .85;
+    cursor: pointer;
 }
