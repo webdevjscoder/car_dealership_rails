@@ -6,4 +6,5 @@ class User < ApplicationRecord
     has_many :vehicles, through: :user_vehicles
     validates :email, presence:{ message: 'is required.' }, unless: -> { skip_email_validation }
     validates :email, uniqueness: { message: 'already exists!' }
+    validates_confirmation_of :password
 end

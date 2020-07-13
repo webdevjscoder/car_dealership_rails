@@ -1,3 +1,31 @@
-    <%= image_tag("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bugatti-chiron-pur-sport-106-1582836604.jpg", width: '100%', height: 'auto')%>
-
-    <%= link_to 'Purchases', purchases_path(current_user) %>
+<div class='user-info-container'>
+    <div class='purchases-link'>
+        <%= link_to 'Purchases', purchases_path(current_user) %>
+    </div>
+    <div class='user-info'>
+        <h2>Profile Info</h2>
+        <ul>
+            <% if !current_user.provider.present? %>
+                <li><%= image_tag("https://img.icons8.com/metro/16/000000/name.png")%> <strong>First Name:</strong> <%= current_user.first_name %></li>
+                <li><%= image_tag("https://img.icons8.com/metro/16/000000/name.png")%> <strong>Last Name:</strong> <%= current_user.last_name %></li>
+                <li><%= image_tag("https://img.icons8.com/metro/16/000000/email.png")%> <strong>Email:</strong> <%= current_user.email %></li>
+                <% if current_user.phone.present? %>
+                    <li><%= image_tag("https://img.icons8.com/android/16/000000/phone.png")%> <strong>Phone:</strong> <%= current_user.phone %></li>
+                <% else %>
+                    <li><%= image_tag("https://img.icons8.com/android/16/000000/phone.png")%> <strong>Phone:</strong><span>1+(500)-555-9595</span>
+                <% end %>
+            <% else %>
+                <li><%= image_tag("https://img.icons8.com/metro/16/000000/name.png")%> <strong>Name:</strong> <%= current_user.name %></li>
+            <% end %>
+        </ul>
+        <% if !current_user.provider.present? %>
+            <%= form_for current_user, :url => url_for(controller: "users", action: "edit"), method: 'Get' do |f| %>
+                <%= f.hidden_field 'id', value: "#{current_user.id}"%>
+                <%= f.submit 'EDIT', class: 'edit-user-btn'%>
+            <% end %>
+            <%= form_for current_user, :url => url_for(controller: "users", action: 'change_password'), method: 'Get' do |f| %>
+                <%= f.submit 'CHANGE PASSWORD', class: 'change-user-password-btn'%>
+            <% end %>
+        <% end %>
+    </div>
+</div>

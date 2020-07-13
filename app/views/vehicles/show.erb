@@ -22,19 +22,21 @@
         <p>City MPG: <%= @vehicle.fuel_type.city_mpg %></p>
         <p>Highway MPG: <%= @vehicle.fuel_type.hwy_mpg %></p>
         <p>Transmission: <%= @vehicle.transmission.name %></p>
-        <%= form_for @vehicle, :url => url_for(controller: "user_vehicles", action: "create"), method: 'Post' do |f| %>
-            <%= f.hidden_field 'id', value: "#{@vehicle.id}" %>
-            <%= f.submit 'ADD TO FAVORITES', class: 'add-to-favs-btn' %>
-        <% end %>
-        <%= form_for @vehicle, :url => url_for(controller: "user_vehicles", action: "checkout"), method: 'Post' do |f| %>
-            <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
-            <%= f.submit 'BUY NOW', class: 'buy-now-btn' %>
-        <% end %>
-        <% if current_user.admin == true %>
-            <%= form_for @vehicle, :url => url_for(controller: "vehicles", action: "edit"), method: 'Get' do |f| %>
-                <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
-                <%= f.submit 'UPDATE', class: 'update-btn' %>
+        <div class='action-btns'>
+            <%= form_for @vehicle, :url => url_for(controller: "user_vehicles", action: "create"), method: 'Post' do |f| %>
+                <%= f.hidden_field 'id', value: "#{@vehicle.id}" %>
+                <%= f.submit 'ADD TO FAVORITES', class: 'add-to-favs-btn' %>
             <% end %>
-        <% end %>
+            <%= form_for @vehicle, :url => url_for(controller: "user_vehicles", action: "checkout"), method: 'Post' do |f| %>
+                <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
+                <%= f.submit 'BUY NOW', class: 'buy-now-btn' %>
+            <% end %>
+            <% if logged_in? && current_user.admin == true %>
+                <%= form_for @vehicle, :url => url_for(controller: "vehicles", action: "edit"), method: 'Get' do |f| %>
+                    <%= f.hidden_field 'id', value: "#{@vehicle.id}"%>
+                    <%= f.submit 'UPDATE', class: 'update-btn' %>
+                <% end %>
+            <% end %>
+        </div>
     </div>
 </section>
