@@ -1,14 +1,17 @@
-<div class='confirm-purchase'>
-    <%= @vehicle.car_make.name %>
-    <%= @vehicle.car_model.name %>
-    <%= @vehicle.year %>
-    <div class='confirm--purchase-image'>
-        <%= image_tag("car-images/#{@vehicle.image}", width: '25%', height: 'auto')%>
+<div class='confirm-container'>
+    <div class='confirm-purchase'>
+        <%= @vehicle.car_make.name %> |
+        <%= @vehicle.car_model.name %> |
+        <%= @vehicle.year %>
     </div>
-    <div class='confirm-buttons'>
-        <%= form_for @vehicle, :url => url_for(controller: "vehicles", action: "purchase"), method: 'Post' do |f| %>
-            <%= f.hidden_field 'id', value: "#{@vehicle.id}" %>
-            <%= f.submit 'PURCHASE', data: { confirm: "Are you sure you want to purchase this vehicle?" }, class: 'purchase-btn' %>
-        <% end %>
-    </div>
+        <div class='confirm-purchase-image'>
+            <%= image_tag("car-images/#{@vehicle.image}")%>
+            <div class='confirm-button'>
+                <%= form_for @vehicle, :url => url_for(controller: "vehicles", action: "purchase"), method: 'Post' do |f| %>
+                    <%= f.hidden_field 'id', value: "#{@vehicle.id}" %>
+                    <%= f.submit 'PURCHASE', data: { confirm: "Are you sure you want to purchase this vehicle?" }, class: 'purchase-btn' %>
+                <% end %>
+                <button><%= link_to 'VIEW', vehicle_path(@vehicle), class: 'view-button' %></button>
+            </div>
+        </div>
 </div>

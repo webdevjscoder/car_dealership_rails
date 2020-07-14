@@ -1,9 +1,12 @@
-<h1>Car Engine</h1>
-
-<%= form_for @engine do |f| %>
-    <%= f.label :horsepower %>
-    <%= f.text_field :horsepower %><br>
-    <%= f.label :torque %>
-    <%= f.text_field :torque %><br>
-    <%= f.submit %>
-<% end %>
+<div class='info-title'>
+    <h1>Car Engine</h1>
+</div>
+<div class='info-form'>
+    <%= form_for @engine do |f| %>
+        <%= f.label :horsepower %>
+        <%= f.number_field :horsepower %><br>
+        <%= f.label :torque %>
+        <%= f.number_field :torque %><br>
+        <%= f.submit 'CREATE', class: 'create-new-car-info' %>
+    <% end %>
+</div>

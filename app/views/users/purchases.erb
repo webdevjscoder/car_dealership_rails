@@ -1,9 +1,16 @@
-<h1>Purchases</h1>
-
-<% @purchases.each do |vehicle| %>
-    <% if vehicle.is_purchased == true %>
-        <%= link_to vehicle_path(vehicle) do %>
-            <%= vehicle.car_make.name %>
-        <% end %>
-    <% end %>
-<% end %>
+<div class='user-favorites-list-container'>
+        <div class='user-favorites-list'>
+            <h1>Purchases</h1>
+        </div>
+        <div class='user-favorite-car-image'>
+            <ul>
+                <li><%= @purchased_vehicle.car_make.name %></li> |
+                <li><%= @purchased_vehicle.car_model.name %></li> |
+                <li><%= @purchased_vehicle.year %></li>
+            </ul>
+            <%= image_tag("car-images/#{@purchased_vehicle.image}") %>
+            <div class='user-favorites-car-list-btns'>
+                <button><%= link_to 'VIEW', vehicle_path(@purchased_vehicle), class: 'view-button' %></button>
+            </div>
+        </div>
+</div>

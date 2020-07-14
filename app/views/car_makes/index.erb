@@ -1,0 +1,15 @@
+<div class='edit-info-title'>
+    <h1>Edit Car Make</h1>
+</div>
+<div class='edit-info-form'>
+    <h4>Select Make</h4>
+    <div class='edit-car-make-links'>
+        <ul>
+        <% @car_makes.each do |car_make| %>
+            <%= link_to edit_car_make_path(car_make) do %>
+                <li><%= car_make.name %></li>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+</div>

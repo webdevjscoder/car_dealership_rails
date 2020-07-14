@@ -1,8 +1,7 @@
 <div class='add-new-car-container'>
     <div class='new-car-title'>
         <h1>Add From Existing Vehicle Data</h1>
-    </div>
-    
+    </div>    
             <div class='car-links'>
                 <div class='links'>
                     <%= link_to 'New Car Make', new_car_make_path %>
@@ -27,6 +26,7 @@
                 <div class='links'>
                     <%= link_to 'New Engine', new_engine_path %>
                 </div>
+                <hr>
             </div>
             <div class='new-car-info'>
             <%= form_for @vehicle, :html => {:class => 'new-car-form'} do |f| %>
@@ -40,17 +40,17 @@
                     <% end %>
                 </select>
                 <br>
-                <%= f.label :car_make %>
+                <span><%= f.label :car_make %> <%= link_to 'Edit', car_makes_path %></span>
                 <%= f.collection_select(:car_make_id, CarMake.all, :id, :name, prompt: 'Select Make') %><br>
-                <%= f.label :car_model %>
+                <span><%= f.label :car_model %> <%= link_to 'Edit', car_models_path %></span>
                 <%= f.collection_select(:car_model_id, CarModel.all, :id, :name, prompt: 'Select Model') %><br>
-                <%= f.label :engine_type %>
+                <span><%= f.label :engine_type %> <%= link_to 'Edit', engine_types_path %></span> 
                 <%= f.collection_select(:engine_type_id, EngineType.all, :id, :name, prompt: 'Select Engine Type') %><br>
-                <%= f.label :fuel_type %>
+                <span><%= f.label :fuel_type %> <%= link_to 'Edit', fuel_types_path %></span>
                 <%= f.collection_select(:fuel_type_id, FuelType.all, :id, :selection_name, prompt: 'Select Fuel Type') %><br>
-                <%= f.label :transmission %>
+                <span><%= f.label :transmissions %> <%= link_to 'Edit', transmissions_path %></span>
                 <%= f.collection_select(:transmission_id, Transmission.all, :id, :name, prompt: 'Select Transmission') %><br>
-                <%= f.label :engine_horsepower %>
+                <span><%= f.label :engine_horsepower %> <%= link_to 'Edit', engines_path %></span>
                 <%= f.collection_select(:engine_id, Engine.all, :id, :engine_select, prompt: 'Select Engine Horsepower') %><br>
                 <%= f.fields_for :inventories do |inventory| %>
                     <%= inventory.label :price %>

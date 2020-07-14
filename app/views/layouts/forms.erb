@@ -9,6 +9,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= yield %>
+    <% if logged_in? && current_user.admin == true %>
+      <%= render "layouts/admin_navbar" %>
+    <% elsif logged_in? && current_user.admin == false %>
+      <%= render "layouts/signedin_nav" %>
+    <% else %>
+      <%= render "layouts/navbar" %>
+    <% end %>
+      <% flash.each do |msg| %>
+        <%= msg %>
+      <% end %>
+    <div class='info-container'>
+      <%= yield %>
+    </div>
   </body>
 </html>

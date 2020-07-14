@@ -1,0 +1,69 @@
+.confirm-container {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "header header header"
+      ". main .";
+}
+
+.confirm-purchase {
+    grid-area: header;
+    overflow: hidden;
+    text-align: center;
+    margin: 90px 8% 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.confirm-purchase-image {
+    grid-area: main;
+    overflow: hidden;
+    width: 100%;
+}
+
+.confirm-purchase-image img {
+    width: 100%;
+    margin: 32px 0;
+}
+
+.confirm-button {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.confirm-button input[type='submit'] {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    margin-top: 16px;
+}
+
+.confirm-button input[type='submit']:hover {
+    opacity: .85;
+    cursor: pointer;
+}
+
+.confirm-button button {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    margin-top: 16px;
+}
+
+.confirm-button button:hover {
+    opacity: .85;
+    cursor: pointer;
+}
+
+.confirm-button button a {
+    text-decoration: none;
+    color: #fff;
+}

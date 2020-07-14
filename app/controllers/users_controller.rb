@@ -21,12 +21,9 @@ class UsersController < ApplicationController
     end
 
     def create_admin
-        byebug
         @admin = User.new(user_params(:first_name, :last_name, :email, :password, :admin))
         @admin.admin = true
-        byebug
         if @admin.save
-            byebug
             session[:user_id] = @admin.id
             redirect_to welcome_path(@admin), alert: 'Account was successfully created!'
         else
@@ -59,6 +56,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        User.find_by_id(params[:id]).destroy
+        redirect_to root_path
+    end
+
     def change_password
         @user = User.find_by_id(params[:id])
     end
@@ -73,11 +75,18 @@ class UsersController < ApplicationController
     end
 
     def purchases
-        if !current_user.vehicles.present?
-            flash[:notice] = "You currently don't have any purchased cars. :("
-            render :show
+        if current_user.vehicles.any?
+            current_user.vehicles.each do |vehicle|
+                if vehicle.is_purchased == true
+                    @purchased_vehicle = vehicle
+                else
+                    flash[:notice] = "You currently don't have any purchased cars. :("
+                    render :show and return
+                end
+            end
         else
-            @purchases = current_user.vehicles
+            flash[:notice] = "You currently don't have any purchased cars. :("
+            render :show and return
         end
     end
 
