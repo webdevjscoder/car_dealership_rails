@@ -262,6 +262,10 @@ hr {
     text-decoration: none;
 }
 
+.small-msg {
+    font-size: small;
+}
+
 select {
     padding: 5px;
     margin: 2px 0;

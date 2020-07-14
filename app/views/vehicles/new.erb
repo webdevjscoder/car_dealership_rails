@@ -53,7 +53,7 @@
                 <span><%= f.label :engine_horsepower %> <%= link_to 'Edit', engines_path %></span>
                 <%= f.collection_select(:engine_id, Engine.all, :id, :engine_select, prompt: 'Select Engine Horsepower') %><br>
                 <%= f.fields_for :inventories do |inventory| %>
-                    <%= inventory.label :price %>
+                    <%= inventory.label :price %> <span class='small-msg'>*Please enter price without dollar sign</span>
                     <%= inventory.text_field :price %>
                 <% end %>
                 <%= f.submit 'Create Vehicle', class: 'new-car-submit' %>

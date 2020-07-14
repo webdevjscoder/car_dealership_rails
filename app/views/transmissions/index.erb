@@ -1,0 +1,15 @@
+<div class='info-title'>
+    <h1>Transmission</h1>
+</div>
+<div class='edit-info-container'>
+    <h4>Select Transmission</h4>
+    <div class='edit-car-info-links'>
+        <ul>
+        <% @transmissions.each do |transmission| %>
+            <%= link_to edit_transmission_path(transmission) do %>
+                <li><%= transmission.name %></li>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+</div>

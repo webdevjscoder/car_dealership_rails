@@ -1,0 +1,15 @@
+<div class='info-title'>
+    <h1>Edit Engine</h1>
+</div>
+<div class='info-form'>
+    <%= form_for @engine do |f| %>
+        <%= f.label :horsepower %>
+        <%= f.text_field :horsepower %>
+        <%= f.label :torque %>
+        <%= f.text_field :torque %>
+        <%= f.submit "UPDATE", class: 'create-new-car-info' %>
+    <% end %>
+    <%= form_for @engine, method: 'Delete' do |f| %>
+        <%= f.submit 'DELETE', class: 'delete-car-info' %>
+    <% end %>
+</div>
