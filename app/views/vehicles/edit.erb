@@ -31,7 +31,7 @@
                     <%= f.collection_select(:engine_id, Engine.all, :id, :engine_select, prompt: 'Select Engine Horsepower') %><br>
                     <%= f.fields_for :inventories do |inventory| %>
                         <%= inventory.label :price %>
-                        <%= inventory.text_field :price, :value=> number_to_currency("#{@vehicle.inventories[0].price}")%>
+                        <%= inventory.text_field :price, :value=> number_with_precision("#{@vehicle.inventories[0].price}", precision: 2) %>
                     <% end %>
             <div class='edit-action-btns'>
                     <%= f.hidden_field :vehicle, :value => @vehicle.id %>
