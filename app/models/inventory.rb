@@ -1,5 +1,7 @@
 class Inventory < ApplicationRecord 
     belongs_to :vehicle
+    # scope :price, -> {where("price > 15000")}
+    # ^^ original scope I want to use but decided to make custom class methods instead.
 
     def self.economical_vehicles
         economical_vehicles = []

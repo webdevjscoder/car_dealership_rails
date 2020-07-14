@@ -38,6 +38,16 @@ class CarMakesController < ApplicationController
         redirect_to new_vehicle_path
     end
 
+    def search
+        car_make = CarMake.where(name: "#{params[:name]}")[0]
+        redirect_to found_vehicles_path(car_make)
+    end
+
+    def found_vehicles
+        @vehicles = Vehicle.where("car_make_id = #{params[:id]}")
+        @searched_vehicles = @vehicles.paginate(page: params[:page], per_page: 5)
+    end
+
     private
 
     def car_make_params(*args)
