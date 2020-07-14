@@ -1,13 +1,17 @@
 <div class='info-title'>
-    <h1>Edit Car Make</h1>
+    <h1>Edit Fuel Type</h1>
 </div>
 <div class='info-form'>
-    <%= form_for @car_make do |f| %>
+    <%= form_for @fuel_type do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %>
+        <%= f.label :city_mpg %>
+        <%= f.number_field :city_mpg %>
+        <%= f.label :hwy_mpg %>
+        <%= f.number_field :hwy_mpg %>
         <%= f.submit "UPDATE", class: 'create-new-car-info' %>
     <% end %>
-    <%= form_for @car_make, method: 'Delete' do |f| %>
+    <%= form_for @fuel_type, method: 'Delete' do |f| %>
         <%= f.submit 'DELETE', class: 'delete-car-info' %>
     <% end %>
 </div>

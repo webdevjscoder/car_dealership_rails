@@ -1,0 +1,17 @@
+<div class='info-title'>
+    <h1>Edit Engine Type</h1>
+</div>
+<div class='info-form'>
+    <%= form_for @engine_type do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :drive_line %>
+        <%= f.collection_select(:drive_line_id, DriveLine.all, :id, :name, prompt: 'Select Drive Line') %>
+        <%= f.label :transmission_type %>
+        <%= f.collection_select(:transmission_type_id, TransmissionType.all, :id, :name, prompt: 'Select Transmission Type') %>
+        <%= f.submit "UPDATE", class: 'create-new-car-info' %>
+    <% end %>
+    <%= form_for @engine_type, method: 'Delete' do |f| %>
+        <%= f.submit 'DELETE', class: 'delete-car-info' %>
+    <% end %>
+</div>

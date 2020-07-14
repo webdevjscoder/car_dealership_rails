@@ -1,0 +1,15 @@
+<div class='info-title'>
+    <h1>Fuel Type</h1>
+</div>
+<div class='edit-info-container'>
+    <h4>Select Fuel Type</h4>
+    <div class='edit-car-info-links'>
+        <ul>
+        <% @fuel_types.each do |fuel_type| %>
+            <%= link_to edit_fuel_type_path(fuel_type) do %>
+                <li><%= fuel_type.name %> | <%= fuel_type.city_mpg %> mpg | <%= fuel_type.hwy_mpg %> mpg</li>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+</div>

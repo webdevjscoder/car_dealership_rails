@@ -1,0 +1,15 @@
+<div class='info-title'>
+    <h1>Engine Type</h1>
+</div>
+<div class='edit-info-container'>
+    <h4>Select Engine Type</h4>
+    <div class='edit-car-info-links'>
+        <ul>
+        <% @engine_types.each do |engine_type| %>
+            <%= link_to edit_engine_type_path(engine_type) do %>
+                <li><%= engine_type.name %></li>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+</div>
