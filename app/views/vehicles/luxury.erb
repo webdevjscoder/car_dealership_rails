@@ -1,9 +1,10 @@
 <div class='car-make-container'>
     <div class='car-makes'>
         <div class='car-search-types'>
-            <%= select_tag(:name, options_from_collection_for_select(CarMake.all, :id, :name), prompt: "Select Make") %>
-            <%= select_tag(:name, options_from_collection_for_select(CarModel.all, :id, :name), prompt: "Select Model") %>
-            <%= select_tag(:name, options_from_collection_for_select(EngineType.all, :id, :name), prompt: "Select Engine Type") %>
+            <%= form_tag('/searched_vehicles', method: :post, class: 'search-form') do %>
+                <%= select_tag(:name, options_from_collection_for_select(CarMake.all, :name, :name), prompt: "Select Make") %>
+                <%= submit_tag 'SEARCH'%>
+            <% end %>
         </div>
         <div class='vehicle-list'>
             <% @luxury.each do |vehicle_info| %>
