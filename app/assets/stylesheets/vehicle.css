@@ -10,8 +10,22 @@
     margin-top: 60px;
 }
 
+.search-form {
+    display: flex;
+}
+
 .car-search-types select {
     margin: 0 5px;
+}
+
+.car-search-types input[type="submit"] {
+    padding: 12px 24px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    margin-left: 6px;
 }
 
 .car-makes ul li {
