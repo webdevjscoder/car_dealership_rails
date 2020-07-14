@@ -1,6 +1,7 @@
 class DriveLinesController < ApplicationController
     def new
         @drive_line = DriveLine.new
+        render :layout => 'forms'
     end
 
     def create

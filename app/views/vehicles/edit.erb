@@ -16,7 +16,7 @@
                             <option value="<%=counter%>"><%= "#{counter}" %></option>
                             <% counter += 1 %>
                         <% end %>
-                    </select>
+                    </select><br>
                     <%= f.label :car_make %>
                     <%= f.collection_select(:car_make_id, CarMake.all, :id, :name, prompt: 'Select Make') %><br>
                     <%= f.label :car_model %>
@@ -31,16 +31,16 @@
                     <%= f.collection_select(:engine_id, Engine.all, :id, :engine_select, prompt: 'Select Engine Horsepower') %><br>
                     <%= f.fields_for :inventories do |inventory| %>
                         <%= inventory.label :price %>
-                        <%= inventory.text_field :price %>
+                        <%= inventory.text_field :price, :value=> number_to_currency("#{@vehicle.inventories[0].price}")%>
                     <% end %>
+            <div class='edit-action-btns'>
                     <%= f.hidden_field :vehicle, :value => @vehicle.id %>
-                    <div class='edit-action-btns'>
-                        <%= f.submit 'UPDATE VEHICLE'%>
-                        <%= form_for @vehicle, method: 'Delete' do |f| %>
-                            <%= f.submit 'DELETE VEHICLE', data: { confirm: "Are you sure you want to delete with vehicle?" }, class: 'delete-btn' %>
-                        <% end %>
-                    </div>
-            <% end %>
+                    <%= f.submit 'UPDATE VEHICLE'%>
+                <% end %>
+                <%= form_for @vehicle, method: 'Delete' do |f| %>
+                    <%= f.submit 'DELETE VEHICLE', data: { confirm: "Are you sure you want to delete with vehicle?" }, class: 'delete-btn' %>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>

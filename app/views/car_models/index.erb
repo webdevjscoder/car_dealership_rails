@@ -1,0 +1,15 @@
+<div class='info-title'>
+    <h1>Edit Car Model</h1>
+</div>
+<div class='info-form'>
+    <h4>Select Model</h4>
+    <div class='car-make-links'>
+        <ul>
+        <% @car_models.each do |car_model| %>
+            <%= link_to edit_car_model_path(car_model) do %>
+                <li><%= car_model.name %></li>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+</div>

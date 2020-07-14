@@ -1,11 +1,16 @@
-<h1>Car Fuel Type</h1>
 
-<%= form_for @fuel_type do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <%= f.label :city_mpg %>
-    <%= f.text_field :city_mpg %><br>
-    <%= f.label :hwy_mpg %>
-    <%= f.text_field :hwy_mpg %><br>
-    <%= f.submit %>
-<% end %>
+
+<div class='info-title'>
+    <h1>Car Fuel Type</h1>
+</div>
+<div class='info-form'>
+    <%= form_for @fuel_type do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+        <%= f.label :city_mpg %>
+        <%= f.number_field :city_mpg %><br>
+        <%= f.label :hwy_mpg %>
+        <%= f.number_field :hwy_mpg %><br>
+        <%= f.submit 'CREATE', class: 'create-new-car-info' %>
+    <% end %>
+</div>

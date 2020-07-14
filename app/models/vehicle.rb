@@ -5,9 +5,9 @@ class Vehicle < ApplicationRecord
     belongs_to :fuel_type
     belongs_to :transmission
     belongs_to :engine
-    has_many :inventories
+    has_many :inventories, :dependent => :destroy
     accepts_nested_attributes_for :inventories
-    has_many :user_vehicles
+    has_many :user_vehicles, :dependent => :destroy
     has_many :users, through: :user_vehicles
     validates_associated :inventories
 

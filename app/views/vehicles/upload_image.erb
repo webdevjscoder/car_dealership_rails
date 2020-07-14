@@ -1,13 +1,13 @@
 <div class='image-upload'>
-        <div class='image-upload-title'>
-                <h3>Upload New Image</h3>
-        </div>
-        <div class='image-upload-form'>
-                <%= form_tag({:action => 'add_image'}, :multipart => true, class: 'form-upload') do %>    
-                <label for="upload_file">Select File :</label>
-                        <span>Upload vehicle image.</span>
-                        <p><%= file_field 'upload', 'datafile' %></p>
-                        <%= submit_tag "Upload", class: 'upload-image-btn' %>
-                <% end %>
-        </div>
+    <div class='image-upload-title'>
+        <h1>Upload New Image</h1>
+    </div>
+    <div class='image-upload-form'>
+        <%= form_tag({:action => 'add_image'}, :multipart => true, class: 'form-upload') do %>    
+        <label for="upload_file">Select File :</label>
+            <span>Upload vehicle image.</span>
+            <p><%= file_field 'upload', 'datafile' %></p>
+                <%= submit_tag "UPLOAD", class: 'upload-image-btn' %>
+            <% end %>
+    </div>
 </div>

@@ -49,7 +49,6 @@ class VehiclesController < ApplicationController
 
     def destroy
         vehicle = Vehicle.find_by_id(params[:id])
-        vehicle.inventories[0].destroy
         vehicle.destroy
         redirect_to vehicles_path
     end
@@ -71,7 +70,7 @@ class VehiclesController < ApplicationController
         if @purchased_vehicle.id.present?
             @purchased_vehicle.vehicle.update(is_purchased: true)
             @purchased_vehicle.save
-            redirect_to root_path(current_user), alert: "Congratulations! You are now the proud owner of the #{@purchased_vehicle.vehicle.year} " "#{@purchased_vehicle.vehicle.car_make.name} " "#{@purchased_vehicle.vehicle.car_model.name}."
+            redirect_to purchases_path(current_user), alert: "Congratulations! You are now the proud owner of the #{@purchased_vehicle.vehicle.year} " "#{@purchased_vehicle.vehicle.car_make.name} " "#{@purchased_vehicle.vehicle.car_model.name}."
         else
             @purchased_vehicle.vehicle.update(is_purchased: true)
             @purchased_vehicle.save

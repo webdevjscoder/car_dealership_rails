@@ -1,7 +1,10 @@
-<h1>Car Model</h1>
-
-<%= form_for @car_model do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-    <%= f.submit %>
-<% end %>
+<div class='info-title'>
+    <h1>Car Model</h1>
+</div>
+<div class='info-form'>
+    <%= form_for @car_model do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %><br>
+        <%= f.submit 'CREATE', class: 'create-new-car-info' %>
+    <% end %>
+</div>

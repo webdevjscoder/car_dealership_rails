@@ -1,0 +1,154 @@
+.info-container {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "header header header"
+      ". main .";
+}
+
+.info-title {
+    grid-area: header;
+    overflow: hidden;
+    text-align: center;
+    margin: 90px 90px;
+    border-bottom: 1px solid #d4cdcd;
+    padding-bottom: 20px;
+}
+
+.info-form {
+    grid-area: main;
+    overflow: hidden;
+    width: 42%;
+    margin: 0 32%;
+}
+
+.info-form form {
+    padding: 40px;
+    border: 1px solid #e5e5e5;
+    justify-content: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.info-form form label {
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.info-form form input[type='text'],
+input[type='number'] {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.info-form form input.create-new-car-info {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    margin: 35px 0;
+}
+
+.info-form form input.create-new-car-info:hover {
+    opacity: .85;
+    cursor: pointer;
+}
+
+.car-make-links ul {
+    display: flex;
+    flex-flow: column wrap;
+    height: 350px;
+    list-style: none;
+}
+
+.car-make-links a {
+    text-decoration: none;
+    margin: 15px 0;
+    color: #000;
+}
+
+.car-make-links a:hover {
+    text-decoration: underline;
+}
+
+.info-title-edit {
+    grid-area: header;
+    overflow: hidden;
+    text-align: center;
+    margin: 90px 90px;
+    border-bottom: 1px solid #d4cdcd;
+    padding-bottom: 20px;
+}
+
+#info-form-edit {
+    grid-area: main;
+    overflow: hidden;
+    width: 42%;
+    margin: 0 30%;
+    border: 1px solid #e5e5e5;
+    padding: 40px 20px; 
+}
+
+#info-form-edit form {
+    justify-content: center;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+#info-form-edit form label {
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+#info-form-edit form input[type='text'],
+input[type='number'] {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#info-form-edit .edit_car_make {
+    padding: 0 12%;
+    margin: 0;
+}
+
+#info-form-edit .edit_car_make input[type='submit'] {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    margin: 25px 0 0;
+}
+
+#info-form-edit .edit_car_make input[type='submit']:hover {
+    opacity: .85;
+    cursor: pointer;
+}
+
+#info-form-edit form input.create-new-car-info {
+    padding: 12px 36px;
+    border-radius: 20px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+    width: 100%;
+    margin: 35px 0;
+}
+
+#info-form-edit form input.create-new-car-info:hover {
+    opacity: .85;
+    cursor: pointer;
+}

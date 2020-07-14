@@ -1,0 +1,13 @@
+<div class='info-title-edit'>
+    <h1>Edit Car Make</h1>
+</div>
+<div id='info-form-edit'>
+    <%= form_for @car_make do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.submit "UPDATE", class: 'create-new-car-info' %>
+    <% end %>
+    <%= form_for @car_make, method: 'Delete', class: 'edit_car_make' do |f| %>
+        <%= f.submit 'DELETE' %>
+    <% end %>
+</div>

@@ -3,6 +3,7 @@ class FuelTypesController < ApplicationController
     def new
         @fuel_types = FuelType.all
         @fuel_type = FuelType.new
+        render :layout => 'forms'
     end
 
     def create

@@ -2,6 +2,7 @@ class EngineTypesController < ApplicationController
 
     def new
         @engine_type = EngineType.new
+        render :layout => 'forms'
     end
 
     def create

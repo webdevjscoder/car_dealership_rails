@@ -2,6 +2,7 @@ class TransmissionsController < ApplicationController
 
     def new
         @transmission = Transmission.new
+        render :layout => 'forms'
     end
 
     def create
