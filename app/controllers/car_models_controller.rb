@@ -11,8 +11,8 @@ class CarModelsController < ApplicationController
     end
 
     def create
-        car_model = CarModel.new(car_model_params(:name))
-        if car_model.save
+        @car_model = CarModel.new(car_model_params(:name))
+        if @car_model.save
             flash[:notice] = 'Car Model was successfully created!'
             redirect_to new_vehicle_path
         else

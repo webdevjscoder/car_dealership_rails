@@ -11,8 +11,8 @@ class TransmissionsController < ApplicationController
     end
 
     def create
-        transmission = Transmission.new(transmission_params(:name))
-        if transmission.save
+        @transmission = Transmission.new(transmission_params(:name))
+        if @transmission.save
             flash[:notice] = 'Transmission was successfully created!'
             redirect_to new_vehicle_path
         else

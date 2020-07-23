@@ -21,3 +21,7 @@ html, body {
     box-sizing: border-box;
     /* background-image: url(https://coder-coder.com/wp-content/uploads/2019/04/post-z-index.png); */
 }
+
+body > div.alert.alert-success {
+    text-align: center;
+}

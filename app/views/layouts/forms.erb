@@ -16,9 +16,6 @@
     <% else %>
       <%= render "layouts/navbar" %>
     <% end %>
-      <% flash.each do |msg| %>
-        <%= msg %>
-      <% end %>
     <div class='info-container'>
       <%= yield %>
     </div>

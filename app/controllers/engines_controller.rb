@@ -11,8 +11,8 @@ class EnginesController < ApplicationController
     end
 
     def create
-        engine = Engine.new(engine_params(:horsepower, :torque))
-        if engine.save
+        @engine = Engine.new(engine_params(:horsepower, :torque))
+        if @engine.save
             flash[:notice] = 'Engine was successfully created!'
             redirect_to new_vehicle_path
         else

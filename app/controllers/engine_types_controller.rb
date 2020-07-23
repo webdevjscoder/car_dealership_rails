@@ -11,8 +11,8 @@ class EngineTypesController < ApplicationController
     end
 
     def create
-        engine_type = EngineType.new(engine_type_params(:name, :drive_line_id, :transmission_type_id))
-        if engine_type.save
+        @engine_type = EngineType.new(engine_type_params(:name, :drive_line_id, :transmission_type_id))
+        if @engine_type.save
             flash[:notice] = 'Engine type was successfully created!'
             redirect_to new_vehicle_path
         else

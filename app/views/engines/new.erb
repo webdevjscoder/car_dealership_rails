@@ -2,6 +2,7 @@
     <h1>Car Engine</h1>
 </div>
 <div class='info-form'>
+    <%= render :partial => 'layouts/errors', :locals => {object: @engine} %>
     <%= form_for @engine do |f| %>
         <%= f.label :horsepower %>
         <%= f.number_field :horsepower %><br>

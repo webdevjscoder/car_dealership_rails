@@ -2,13 +2,14 @@
     <h1>Car Engine Type</h1>
 </div>
 <div class='info-form'>
+    <%= render :partial => 'layouts/errors', :locals => {object: @engine_type} %>
     <%= form_for @engine_type do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %><br>
         <%= f.label :drive_line %>
-        <%= f.collection_select(:drive_line_id, DriveLine.all, :id, :name, prompt: 'Select Drive Line') %><br>
+        <%= f.collection_select(:drive_line_id, DriveLine.all, :id, :name, prompt: 'Select Drive Line', required: true) %><br>
         <%= f.label :transmission_type %>
-        <%= f.collection_select(:transmission_type_id, TransmissionType.all, :id, :name, prompt: 'Select Transmission Type') %><br>
+        <%= f.collection_select(:transmission_type_id, TransmissionType.all, :id, :name, prompt: 'Select Transmission Type', required: true) %><br>
         <%= f.submit 'CREATE', class: 'create-new-car-info' %>
     <% end %>
 </div>

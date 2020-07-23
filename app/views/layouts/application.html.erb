@@ -17,8 +17,8 @@
     <% else %>
       <%= render "layouts/navbar" %>
     <% end %>
-      <% flash.each do |msg| %>
-        <%= msg %>
+      <% if flash[:notice] -%>
+        <div class = "alert alert-success"><%= flash[:notice] %></div>
       <% end %>
     <%= yield %>
   </body>
