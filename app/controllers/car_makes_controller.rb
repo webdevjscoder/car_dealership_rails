@@ -11,12 +11,12 @@ class CarMakesController < ApplicationController
     end
 
     def create
-        car_make = CarMake.new(car_make_params(:name))
-        if car_make.save
+        @car_make = CarMake.new(car_make_params(:name))
+        if @car_make.save
             flash[:notice] = 'Car Make was successfully created!'
             redirect_to new_vehicle_path
         else
-            render :new
+            render :new            
         end
     end
 

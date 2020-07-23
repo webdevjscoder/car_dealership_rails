@@ -1,7 +1,9 @@
 <div class='info-title'>
     <h1>Car Make</h1>
 </div>
+
 <div class='info-form'>
+    <%= render :partial => 'layouts/errors', :locals => {object: @car_make} %>
     <%= form_for @car_make do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %><br>

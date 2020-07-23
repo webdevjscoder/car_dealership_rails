@@ -4,6 +4,7 @@
     <h1>Car Fuel Type</h1>
 </div>
 <div class='info-form'>
+    <%= render :partial => 'layouts/errors', :locals => {object: @fuel_type} %>
     <%= form_for @fuel_type do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %><br>

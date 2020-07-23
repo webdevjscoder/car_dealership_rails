@@ -12,8 +12,8 @@ class FuelTypesController < ApplicationController
     end
 
     def create
-        fuel_type = FuelType.new(fuel_type_params(:name, :city_mpg, :hwy_mpg))
-        if fuel_type.save
+        @fuel_type = FuelType.new(fuel_type_params(:name, :city_mpg, :hwy_mpg))
+        if @fuel_type.save
             flash[:notice] = 'Fuel type was successfully created!'
             redirect_to new_vehicle_path
         else

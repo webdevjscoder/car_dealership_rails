@@ -1,0 +1,5 @@
+<% if object.errors.any? %>
+    <div class='error-msg'>
+        <%= object.errors.full_messages.first %>
+    </div>
+<% end%>
