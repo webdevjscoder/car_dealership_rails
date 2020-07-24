@@ -9,6 +9,8 @@ class Vehicle < ApplicationRecord
     accepts_nested_attributes_for :inventories
     has_many :user_vehicles, :dependent => :destroy
     has_many :users, through: :user_vehicles
+    has_many :reviews
+    has_many :users, through: :reviews
     validates_associated :inventories
 
     def self.save(upload, id)

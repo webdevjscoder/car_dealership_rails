@@ -1,0 +1,51 @@
+.review-header  {
+    margin: 0 70px 25px 75px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding: 20px 0;
+}
+
+.review-header h1 {
+    font-size: 28px;
+    margin-top: 12px;
+    margin-bottom: 0px;
+}
+
+body > section.reviews > div.review-header > button {
+    padding: 12px 36px;
+    border-radius: 35px;
+    background-color: #3e6ae1;
+    font-weight: 700;
+    color: #fff;
+    border: 0;
+}
+
+body > section.reviews > div.review-header > button {
+    opacity: .85;
+    cursor: pointer;
+}
+
+body > section.reviews > div.review-header > button > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.review-comment {
+    border: 1px solid #e5e5e5;
+    margin: 18.969px 337.250px;
+    padding: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+}
+
+.user-name {
+    margin: 35px 0 0 340.25px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.no-comments h3 {
+    text-align: center;
+}
+

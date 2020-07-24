@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_233935) do
+ActiveRecord::Schema.define(version: 2020_07_23_222403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(version: 2020_07_10_233935) do
     t.bigint "vehicle_id", null: false
     t.integer "quantity"
     t.index ["vehicle_id"], name: "index_inventories_on_vehicle_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "vehicle_id", null: false
+    t.bigint "user_id", null: false
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["vehicle_id"], name: "index_reviews_on_vehicle_id"
   end
 
   create_table "transmission_types", id: :serial, force: :cascade do |t|
@@ -99,6 +109,8 @@ ActiveRecord::Schema.define(version: 2020_07_10_233935) do
   add_foreign_key "engine_types", "drive_lines", name: "engine_types_drive_line_id_fkey"
   add_foreign_key "engine_types", "transmission_types", name: "engine_types_transmission_type_id_fkey"
   add_foreign_key "inventories", "vehicles"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "vehicles"
   add_foreign_key "user_vehicles", "users"
   add_foreign_key "user_vehicles", "vehicles"
   add_foreign_key "vehicles", "car_makes", name: "vehicles_make_id_fkey"
