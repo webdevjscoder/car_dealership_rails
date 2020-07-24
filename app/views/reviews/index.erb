@@ -49,15 +49,19 @@
     </div>
     <hr>
         <% @vehicle.reviews.each do |review| %>
-        <p class='user-name'><%= review.user.first_name %> <%= review.user.last_name %></p>
-        <%= form_for review, :url => url_for(controller: "reviews", action: "edit"), method: 'Get' do |f| %>
-            <%= f.hidden_field 'id', value: "#{review.id}"%>
-            <%= f.submit 'UPDATE', class: 'update-btn' %>
-        <% end %>
-        <%= form_for review, method: 'Delete' do |f| %>
-            <%= f.hidden_field 'vehicle_id', value: "#{review.vehicle.id}"%>
-            <%= f.submit 'DELETE', data: { confirm: "Are you sure you want to delete with vehicle?" }, class: 'delete-btn' %>
-        <% end %>
+        <div class='review-action-container'>
+            <p class='user-name'><%= review.user.first_name %> <%= review.user.last_name %></p>
+            <div class='review-action-btns'>
+                <%= form_for review, :url => url_for(controller: "reviews", action: "edit"), method: 'Get' do |f| %>
+                    <%= f.hidden_field 'id', value: "#{review.id}"%>
+                    <button><%= image_tag("https://img.icons8.com/ios-glyphs/16/000000/edit.png") %><% f.submit 'UPDATE', class: 'update-btn' %></button>
+                <% end %>
+                <%= form_for review, method: 'Delete' do |f| %>
+                    <%= f.hidden_field 'vehicle_id', value: "#{review.vehicle.id}"%>
+                    <button><%= image_tag("https://img.icons8.com/flat_round/16/000000/delete-sign.png") %><% f.submit 'DELETE', data: { confirm: "Are you sure you want to delete with vehicle?" }, class: 'delete-btn' %></button>
+                <% end %>
+            </div>
+        </div>
         <div class='review-comment'>
             <%= review.comment %>
         </div>

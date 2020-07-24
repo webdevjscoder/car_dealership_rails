@@ -40,7 +40,6 @@ body > section.reviews > div.review-header > button > a {
 }
 
 .user-name {
-    margin: 35px 0 0 340.25px;
     font-size: 18px;
     font-weight: bold;
 }
@@ -49,3 +48,26 @@ body > section.reviews > div.review-header > button > a {
     text-align: center;
 }
 
+.review-action-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 25%;
+}
+
+.review-action-btns {
+    display: flex;
+    margin: 15px 0;
+}
+
+.edit_review {
+    margin-right: 15px;
+}
+
+.review-action-btns button {
+    background-color: #fff;
+    border: none;
+}
+
+.review-action-btns button:hover {
+    cursor: pointer;
+}
