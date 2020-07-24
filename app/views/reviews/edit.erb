@@ -1,0 +1,12 @@
+<div class='info-title'>
+    <h1>Edit Review</h1>
+</div>
+<div class='info-form'>
+    <%= render :partial => 'layouts/errors', :locals => {object: @review} %>
+    <%= form_for @review do |f| %>
+        <%= f.label :comment %>
+        <%= f.text_area :comment, placeholder: 'Comment here...' %><br>
+        <%= f.hidden_field :vehicle_id, :value => @vehicle.id%>
+        <%= f.submit 'Submit', class: 'create-new-car-info' %>
+    <% end %>
+</div>

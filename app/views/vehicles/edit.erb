@@ -33,7 +33,7 @@
                         <%= inventory.label :price %>
                         <%= inventory.text_field :price, :value=> number_with_precision("#{@vehicle.inventories[0].price}", precision: 2) %>
                     <% end %>
-            <div class='edit-action-btns'>
+                <div class='edit-action-btns'>
                     <%= f.hidden_field :vehicle, :value => @vehicle.id %>
                     <%= f.submit 'UPDATE VEHICLE'%>
                 <% end %>

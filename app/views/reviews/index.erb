@@ -37,7 +37,41 @@
                     <%= f.submit 'UPDATE', class: 'update-btn' %>
                 <% end %>
             <% end %>
-            <button class='reviews-link-btn'><%= link_to "REVIEWS",  create_review_vehicle_path %></button>   
         </div>
     </div>
 </section>
+
+<% if @vehicle.reviews.present? %>
+<section class='reviews'>
+    <div class='review-header'>
+        <h1>Reviews</h1>
+        <button><%= link_to "COMMENT",  reviews_new_vehicle_path %></button>   
+    </div>
+    <hr>
+        <% @vehicle.reviews.each do |review| %>
+        <p class='user-name'><%= review.user.first_name %> <%= review.user.last_name %></p>
+        <%= form_for review, :url => url_for(controller: "reviews", action: "edit"), method: 'Get' do |f| %>
+            <%= f.hidden_field 'id', value: "#{review.id}"%>
+            <%= f.submit 'UPDATE', class: 'update-btn' %>
+        <% end %>
+        <%= form_for review, method: 'Delete' do |f| %>
+            <%= f.hidden_field 'vehicle_id', value: "#{review.vehicle.id}"%>
+            <%= f.submit 'DELETE', data: { confirm: "Are you sure you want to delete with vehicle?" }, class: 'delete-btn' %>
+        <% end %>
+        <div class='review-comment'>
+            <%= review.comment %>
+        </div>
+        <% end %>
+</section>
+<% else %>
+    <section class='reviews'>
+    <div class='review-header'>
+        <h1>Reviews</h1>
+        <button><%= link_to "COMMENT",  reviews_new_vehicle_path %></button>   
+    </div>
+    <hr>
+    <div class='no-comments'>
+        <h3>Currently no comments for this car. :( Be the first to comment! :)</h3>
+    </div>
+</section>
+<% end %>

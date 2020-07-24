@@ -7,10 +7,13 @@ Rails.application.routes.draw do
   resources :fuel_types, except: [:show]
   resources :transmissions, except: [:show]
   resources :user_vehicles, only: [:create]
+  resources :reviews
   resources :vehicles do
     member do
       get '/confirmation/:id', to: 'user_vehicles#confirmation', as: 'confirmation'
       post '/confirmation/:id/purchase/:id', to: 'vehicles#purchase', as: 'purchase'
+      match '/reviews', to: 'reviews#index', as: :create_review, via: [:get, :post]
+      get '/reviews/new', to: 'reviews#new'
     end
   end
   get '/upload_image/:id', to: 'vehicles#upload_image', as: 'upload_image'
