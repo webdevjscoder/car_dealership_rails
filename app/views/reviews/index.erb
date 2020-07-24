@@ -45,12 +45,19 @@
 <section class='reviews'>
     <div class='review-header'>
         <h1>Reviews</h1>
-        <button><%= link_to "COMMENT",  reviews_new_vehicle_path %></button>   
+        <% if logged_in? %>
+            <button><%= link_to "COMMENT",  reviews_new_vehicle_path %></button>
+        <% end %>
     </div>
     <hr>
         <% @vehicle.reviews.each do |review| %>
         <div class='review-action-container'>
-            <p class='user-name'><%= review.user.first_name %> <%= review.user.last_name %></p>
+            <% if !review.user.provider.present? %>
+                <p class='user-name'><%= review.user.first_name %> <%= review.user.last_name %></p>
+            <% else %>
+                <p class='user-name'><%= review.user.name %></p>
+            <% end %>
+            <% if logged_in? && current_user.id == review.user.id %>
             <div class='review-action-btns'>
                 <%= form_for review, :url => url_for(controller: "reviews", action: "edit"), method: 'Get' do |f| %>
                     <%= f.hidden_field 'id', value: "#{review.id}"%>
@@ -61,6 +68,7 @@
                     <button><%= image_tag("https://img.icons8.com/flat_round/16/000000/delete-sign.png") %><% f.submit 'DELETE', data: { confirm: "Are you sure you want to delete with vehicle?" }, class: 'delete-btn' %></button>
                 <% end %>
             </div>
+            <% end %>
         </div>
         <div class='review-comment'>
             <%= review.comment %>
